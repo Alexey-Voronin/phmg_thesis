@@ -1,0 +1,799 @@
+****************************************************************************************************************************************************************
+***                                WIDEN YOUR WINDOW TO 160 CHARACTERS.  Use 'enscript -r -fCourier9' to print this document                                 ***
+****************************************************************************************************************************************************************
+
+------------------------------------------------------------------ PETSc Performance Summary: ------------------------------------------------------------------
+
+../solver.py on a default named cn018.delta.ncsa.illinois.edu with 72 processors, by avoronin1 Sun Mar  3 19:35:29 2024
+Using Petsc Development GIT revision: v3.4.2-44079-gfe466959bc  GIT Date: 2024-01-30 21:21:56 +0000
+
+                         Max       Max/Min     Avg       Total
+Time (sec):           8.584e+02     1.000   8.583e+02
+Objects:              0.000e+00     0.000   0.000e+00
+Flops:                1.247e+12     3.623   5.085e+11  3.661e+13
+Flops/sec:            1.453e+09     3.623   5.925e+08  4.266e+10
+MPI Msg Count:        2.769e+05     2.368   2.033e+05  1.464e+07
+MPI Msg Len (bytes):  1.357e+10     2.485   4.814e+04  7.047e+11
+MPI Reductions:       3.200e+03     1.000
+
+Flop counting convention: 1 flop = 1 real number operation of type (multiply/divide/add/subtract)
+                            e.g., VecAXPY() for real vectors of length N --> 2N flops
+                            and VecAXPY() for complex vectors of length N --> 8N flops
+
+Summary of Stages:   ----- Time ------  ----- Flop ------  --- Messages ---  -- Message Lengths --  -- Reductions --
+                        Avg     %Total     Avg     %Total    Count   %Total     Avg         %Total    Count   %Total
+ 0:      Main Stage: 1.1128e+01   1.3%  1.5823e+08   0.0%  9.542e+05   6.5%  5.355e+03        0.7%  5.340e+02  16.7%
+ 1: Warm-up Solve: k=10 nref=1: 6.5503e+02  76.3%  3.1051e+13  84.8%  7.036e+06  48.1%  5.088e+04       50.8%  1.431e+03  44.7%
+ 2: Warm Solve: k=10 nref=1: 1.7290e+02  20.1%  5.5626e+12  15.2%  6.647e+06  45.4%  5.140e+04       48.5%  1.217e+03  38.0%
+
+------------------------------------------------------------------------------------------------------------------------
+See the 'Profiling' chapter of the users' manual for details on interpreting output.
+Phase summary info:
+   Count: number of times phase was executed
+   Time and Flop: Max - maximum over all processors
+                  Ratio - ratio of maximum to minimum over all processors
+   Mess: number of messages sent
+   AvgLen: average message length (bytes)
+   Reduct: number of global reductions
+   Global: entire computation
+   Stage: stages of a computation. Set stages with PetscLogStagePush() and PetscLogStagePop().
+      %T - percent time in this phase         %F - percent flop in this phase
+      %M - percent messages in this phase     %L - percent message lengths in this phase
+      %R - percent reductions in this phase
+   Total Mflop/s: 10e-6 * (sum of flop over all processors)/(max time over all processors)
+------------------------------------------------------------------------------------------------------------------------
+Event                Count      Time (sec)     Flop                              --- Global ---  --- Stage ----  Total
+                   Max Ratio  Max     Ratio   Max  Ratio  Mess   AvgLen  Reduct  %T %F %M %L %R  %T %F %M %L %R Mflop/s
+------------------------------------------------------------------------------------------------------------------------
+
+--- Event Stage 0: Main Stage
+
+BuildTwoSided         87 1.0 1.3758e+00 9.3 0.00e+00 0.0 1.8e+05 4.0e+00 8.7e+01  0  0  1  0  3   8  0 19  0 16     0
+BuildTwoSidedF         8 1.0 1.3442e+00 7.4 0.00e+00 0.0 3.1e+03 1.0e+06 8.0e+00  0  0  0  0  0   8  0  0 61  1     0
+SFSetGraph            85 1.0 5.2338e-02 2.7 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+SFSetUp               79 1.0 1.9223e-01 1.3 0.00e+00 0.0 3.6e+05 2.2e+03 7.9e+01  0  0  2  0  2   1  0 38 16 15     0
+SFBcastBegin         216 1.0 8.1492e-02 3.6 0.00e+00 0.0 5.1e+05 2.2e+03 0.0e+00  0  0  3  0  0   1  0 54 22  0     0
+SFBcastEnd           216 1.0 1.3982e-01 2.2 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   1  0  0  0  0     0
+SFReduceBegin         27 1.0 6.7919e-03 2.4 0.00e+00 0.0 6.2e+04 5.0e+02 0.0e+00  0  0  0  0  0   0  0  7  1  0     0
+SFReduceEnd           27 1.0 2.6414e-02 9.6 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+SFFetchOpBegin         4 1.0 1.6138e-04 2.4 0.00e+00 0.0 9.0e+03 3.5e+02 0.0e+00  0  0  0  0  0   0  0  1  0  0     0
+SFFetchOpEnd           4 1.0 1.8482e-03 4.1 0.00e+00 0.0 9.0e+03 3.5e+02 0.0e+00  0  0  0  0  0   0  0  1  0  0     0
+SFCreateEmbed          4 1.0 3.9395e-03 7.0 0.00e+00 0.0 8.7e+03 9.0e+01 0.0e+00  0  0  0  0  0   0  0  1  0  0     0
+SFDistSection         42 1.0 4.5794e-02 1.7 0.00e+00 0.0 2.9e+05 3.0e+02 5.2e+01  0  0  2  0  2   0  0 30  2 10     0
+SFSectionSF           43 1.0 2.5549e-02 1.2 0.00e+00 0.0 1.9e+05 1.2e+02 4.3e+01  0  0  1  0  1   0  0 19  0  8     0
+SFRemoteOff            1 1.0 4.2686e-03 1.7 0.00e+00 0.0 1.5e+03 1.4e+01 1.0e+00  0  0  0  0  0   0  0  0  0  0     0
+SFPack               247 1.0 1.8435e-02 3.1 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+SFUnpack             251 1.0 2.8224e-02 4.9 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+VecNorm                1 1.0 3.3485e-03 13.4 6.72e+04 1.2 0.0e+00 0.0e+00 1.0e+00  0  0  0  0  0   0  3  0  0  0  1311
+VecScale               1 1.0 2.5938e-05 2.9 3.36e+04 1.2 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  1  0  0  0 84594
+VecNormalize           1 1.0 3.3737e-03 1.3 1.01e+05 1.2 0.0e+00 0.0e+00 1.0e+00  0  0  0  0  0   0  4  0  0  0  1951
+MatAssemblyBegin       8 1.0 1.7079e+00 9.2 0.00e+00 0.0 3.1e+03 1.0e+06 8.0e+00  0  0  0  0  0  10  0  0 61  1     0
+MatAssemblyEnd         8 1.0 2.2796e+00 1.0 0.00e+00 0.0 3.6e+03 5.2e+03 2.4e+01  0  0  0  0  1  20  0  0  0  4     0
+DMPlexBuFrCeLi         1 1.0 1.4518e-02 1.6 0.00e+00 0.0 0.0e+00 0.0e+00 1.0e+00  0  0  0  0  0   0  0  0  0  0     0
+DMPlexBuCoFrCeLi       1 1.0 5.5044e-03 7.6 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Mesh Partition         3 1.0 2.6500e-01 1.0 0.00e+00 0.0 5.6e+04 3.0e+02 7.6e+01  0  0  0  0  2   2  0  6  0 14     0
+Mesh Migration         3 1.0 5.6269e-02 1.0 0.00e+00 0.0 3.1e+05 2.6e+02 1.7e+02  0  0  2  0  5   0  0 32  2 31     0
+DMPlexPartSelf         1 1.0 1.1182e-03 201.8 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+DMPlexPartLblInv       3 1.0 1.5837e-01 1.4 0.00e+00 0.0 0.0e+00 0.0e+00 9.0e+00  0  0  0  0  0   1  0  0  0  2     0
+DMPlexPartLblSF        3 1.0 7.1400e-03 1.4 0.00e+00 0.0 1.7e+04 1.9e+02 3.0e+00  0  0  0  0  0   0  0  2  0  1     0
+DMPlexPartStrtSF       3 1.0 1.1105e-02 1.6 0.00e+00 0.0 8.3e+03 7.5e+02 0.0e+00  0  0  0  0  0   0  0  1  0  0     0
+DMPlexPointSF          3 1.0 3.6417e-03 1.7 0.00e+00 0.0 8.3e+03 7.6e+02 0.0e+00  0  0  0  0  0   0  0  1  0  0     0
+DMPlexInterp           1 1.0 3.8854e-02 1.6 0.00e+00 0.0 0.0e+00 0.0e+00 3.0e+00  0  0  0  0  0   0  0  0  0  1     0
+DMPlexDistribute       1 1.0 1.5606e-01 1.0 0.00e+00 0.0 2.9e+03 2.7e+02 5.2e+01  0  0  0  0  2   1  0  0  0 10     0
+DMPlexDistCones        3 1.0 1.6437e-02 1.0 0.00e+00 0.0 4.9e+04 6.4e+02 6.0e+00  0  0  0  0  0   0  0  5  1  1     0
+DMPlexDistLabels       3 1.0 1.9317e-02 1.1 0.00e+00 0.0 1.8e+05 2.3e+02 1.1e+02  0  0  1  0  3   0  0 19  1 20     0
+DMPlexDistOvrlp        2 1.0 1.6974e-01 1.0 0.00e+00 0.0 3.7e+05 2.8e+02 2.0e+02  0  0  3  0  6   2  0 39  2 37     0
+DMPlexDistField        5 1.0 4.7449e-03 1.3 0.00e+00 0.0 5.3e+04 6.5e+01 1.4e+01  0  0  0  0  0   0  0  6  0  3     0
+DMPlexStratify         7 1.0 1.9371e-02 1.9 0.00e+00 0.0 0.0e+00 0.0e+00 7.0e+00  0  0  0  0  0   0  0  0  0  1     0
+DMPlexSymmetrize       7 1.0 2.0282e-03 6.8 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+DMPlexTransform        1 1.0 1.8720e-02 1.6 0.00e+00 0.0 3.1e+03 1.6e+01 6.0e+00  0  0  0  0  0   0  0  0  0  1     0
+StokesSolver:init       1 1.0 9.9867e+00 1.0 1.21e+06 1.1 9.5e+05 5.1e+03 5.3e+02  1  0  6  1 16  90 52 100 96 99     8
+firedrake.utility_meshes.BoxMesh       1 1.0 3.1247e-01 1.0 0.00e+00 0.0 2.9e+03 2.7e+02 6.5e+01  0  0  0  0  2   3  0  0  0 12     0
+CreateMesh             6 1.0 4.9150e-01 1.0 0.00e+00 0.0 7.9e+05 2.7e+02 3.3e+02  0  0  5  0 10   4  0 83  4 62     0
+firedrake.mesh.MeshTopology._set_partitioner       2 1.0 1.6189e-02 20.0 0.00e+00 0.0 0.0e+00 0.0e+00 1.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.mesh.MeshTopology._get_partitioner       2 1.0 1.4426e-05 2.2 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Mesh: numbering        2 1.0 3.6964e-02 1.1 0.00e+00 0.0 0.0e+00 0.0e+00 8.0e+00  0  0  0  0  0   0  0  0  0  1     0
+Mesh: reorder          2 1.0 1.8755e-02 1.4 0.00e+00 0.0 0.0e+00 0.0e+00 4.0e+00  0  0  0  0  0   0  0  0  0  1     0
+CreateFunctionSpace       4 1.0 2.6330e-01 1.2 0.00e+00 0.0 1.6e+04 3.8e+02 0.0e+00  0  0  0  0  0   2  0  2  0  0     0
+firedrake.functionspace.make_scalar_element       4 1.0 4.9864e-04 1.4 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.functionspaceimpl.FunctionSpace.__init__       6 1.0 2.6307e-01 1.2 0.00e+00 0.0 1.6e+04 3.8e+02 0.0e+00  0  0  0  0  0   2  0  2  0  0     0
+firedrake.functionspacedata.get_shared_data       6 1.0 2.6165e-01 1.2 0.00e+00 0.0 1.6e+04 3.8e+02 0.0e+00  0  0  0  0  0   2  0  2  0  0     0
+firedrake.functionspacedata.FunctionSpaceData.__init__       6 1.0 2.6158e-01 1.2 0.00e+00 0.0 1.6e+04 3.8e+02 0.0e+00  0  0  0  0  0   2  0  2  0  0     0
+FunctionSpaceData: CreateElement      12 1.0 1.8091e-01 1.1 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   2  0  0  0  0     0
+firedrake.mesh.MeshTopology._facets       4 1.0 4.1059e-02 1.7 0.00e+00 0.0 1.6e+04 3.8e+02 0.0e+00  0  0  0  0  0   0  0  2  0  0     0
+firedrake.mesh._Facets.__init__       4 1.0 1.6781e-03 2.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.dmhooks.set_function_space       5 1.0 1.1072e-04 1.8 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.constant.Constant.assign       1 1.0 5.6666e-05 2.5 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.functionspace.MixedFunctionSpace       1 1.0 1.5624e-03 1.3 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.function.Function.__init__      15 1.0 5.7318e-03 2.7 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.function.Function.assign       6 1.0 2.1000e-01 4.4 0.00e+00 0.0 0.0e+00 0.0e+00 7.0e+00  0  0  0  0  0   1  0  0  0  1     0
+firedrake.assign.Assigner.assign       4 1.0 4.2945e-02 1.6 0.00e+00 0.0 0.0e+00 0.0e+00 5.0e+00  0  0  0  0  0   0  0  0  0  1     0
+firedrake.assemble.assemble       2 1.0 8.6114e-01 1.0 2.22e+06 1.1 3.7e+03 6.0e+04 6.0e+00  0  0  0  0  0   8 96  0  4  1   176
+firedrake.tsfc_interface.compile_form       2 1.0 8.4139e-02 1.7 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   1  0  0  0  0     0
+firedrake.formmanipulation.split_form       2 1.0 1.7100e-02 4.4 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.formmanipulation.ExtractSubBlock.split       2 1.0 2.9906e-05 2.5 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.functionspacedata.FunctionSpaceData.get_map      11 1.0 3.5911e-04 1.5 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.mesh.AbstractMeshTopology.measure_set       2 1.0 3.7290e-05 1.9 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.mesh.AbstractMeshTopology.cell_subset       2 1.0 1.0830e-05 2.3 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+ParLoopExecute         2 1.0 3.0016e-01 1.2 2.22e+06 1.1 3.7e+03 6.0e+04 0.0e+00  0  0  0  0  0   3 96  0  4  0   505
+Parloop_Cells_wrap_form_cell_integral       4 1.0 2.3140e-01 1.2 2.22e+06 1.1 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   2 96  0  0  0   655
+pyop2.global_kernel.GlobalKernel.compile       1 1.0 1.9438e-01 1.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   2  0  0  0  0     0
+Log_Event_form_cell_integral      88 1.1 2.9531e-04 1.6 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+ParLoopRednBegin       2 1.0 4.2213e-02 293.4 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+ParLoopRednEnd         2 1.0 6.0829e-02 45.4 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.functionspaceimpl.WithGeometryBase.sub       8 1.0 1.1381e-04 2.1 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.ufl_expr.TestFunction       2 1.0 2.5044e-04 1.4 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.bcs.BCBase.__init__       2 1.0 9.2544e-05 1.7 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.interpolation.make_interpolator       2 1.0 2.3165e-01 1.8 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   2  0  0  0  0     0
+firedrake.variational_solver.NonlinearVariationalProblem.__init__       1 1.0 2.0350e-02 1.1 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.ufl_expr.derivative       2 1.0 1.2273e-03 1.2 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.ufl_expr.TrialFunction       1 1.0 8.0731e-05 1.4 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.ufl_expr.adjoint       1 1.0 1.8827e-02 1.1 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.variational_solver.NonlinearVariationalSolver.__init__       1 1.0 7.7390e+00 1.0 1.01e+05 1.2 7.0e+04 6.6e+04 9.6e+01  1  0  0  1  3  69  4  7 91 18     1
+firedrake.solving_utils._SNESContext.__init__       1 1.0 5.8191e-03 1.1 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.cofunction.Cofunction.__init__       1 1.0 3.9363e-04 1.2 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.assemble.allocate_matrix       1 1.0 7.5198e+00 1.0 0.00e+00 0.0 7.0e+04 6.6e+04 8.6e+01  1  0  0  1  3  68  0  7 91 16     0
+CreateSparsity         4 1.0 1.8495e+00 1.0 0.00e+00 0.0 1.8e+04 2.5e+04 2.8e+01  0  0  0  0  1  17  0  2  9  5     0
+MatZeroInitial         4 1.0 3.3944e+00 1.6 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0  24  0  0  0  0     0
+firedrake.function.Function.sub       1 1.0 4.1353e-04 2.5 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.nullspace.VectorSpaceBasis.nullspace       1 1.0 2.2142e-05 2.1 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.halo.Halo.global_to_local_begin       1 1.0 3.7364e-03 4.2 0.00e+00 0.0 3.7e+03 6.0e+04 0.0e+00  0  0  0  0  0   0  0  0  4  0     0
+firedrake.halo.Halo.global_to_local_end       1 1.0 5.3139e-02 12.8 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+
+--- Event Stage 1: Warm-up Solve: k=10 nref=1
+
+BuildTwoSided         62 1.2 2.1549e+02 18.7 0.00e+00 0.0 6.0e+04 4.0e+00 5.1e+01 20  0  0  0  2  26  0  1  0  4     0
+BuildTwoSidedF        45 1.3 1.1947e+01 3.6 0.00e+00 0.0 3.3e+04 7.3e+04 3.4e+01  1  0  0  0  1   1  0  0  1  2     0
+SFSetGraph            21 1.0 1.2242e-01 2.9 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+SFSetUp               17 1.0 2.0450e+02 170.1 0.00e+00 0.0 8.8e+04 6.2e+03 1.7e+01 19  0  1  0  1  25  0  1  0  1     0
+SFBcastBegin         757 1.0 2.1500e+00 3.5 0.00e+00 0.0 3.1e+06 5.9e+04 0.0e+00  0  0 21 26  0   0  0 44 51  0     0
+SFBcastEnd           757 1.0 1.2074e+01 2.1 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  1  0  0  0  0   1  0  0  0  0     0
+SFReduceBegin        699 1.0 1.8215e+00 9.5 0.00e+00 0.0 2.9e+06 5.5e+04 0.0e+00  0  0 20 22  0   0  0 41 44  0     0
+SFReduceEnd          699 1.0 2.8628e+02 47.9 3.95e+08 2.6 0.0e+00 0.0e+00 0.0e+00 26  0  0  0  0  35  0  0  0  0    69
+SFPack              2604 1.0 3.5478e+00 5.2 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+SFUnpack            2604 1.0 6.9936e+00 5.2 3.95e+08 2.6 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   1  0  0  0  0  2829
+VecMDot               44 1.0 9.9559e-01 9.6 2.28e+07 1.2 0.0e+00 0.0e+00 4.4e+01  0  0  0  0  1   0  0  0  0  3  1494
+VecNorm              863 1.0 2.3214e+01 47.6 2.31e+07 1.3 0.0e+00 0.0e+00 8.6e+02  1  0  0  0 27   1  0  0  0 60    64
+VecScale              95 1.0 4.1146e-02 108.3 1.57e+06 1.2 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0  2517
+VecShift              24 1.0 1.8995e-04 1.4 2.32e+05 1.1 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0 83391
+VecCopy              443 1.0 3.3758e-02 7.3 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+VecSet              1450 1.0 1.4123e+00 4.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+VecAXPY              172 1.0 5.0285e-02 11.9 5.95e+06 1.3 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0  7588
+VecAYPX             1008 1.0 3.6768e-02 3.2 1.51e+07 1.3 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0 26276
+VecAXPBYCZ           384 1.0 4.7917e-02 5.5 2.33e+07 1.3 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0 31043
+VecMAXPY              47 1.0 2.9385e-02 3.5 2.49e+07 1.2 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0 55242
+VecScatterBegin     1148 1.0 3.6511e-01 9.0 0.00e+00 0.0 9.5e+05 1.4e+04 0.0e+00  0  0  6  2  0   0  0 13  4  0     0
+VecScatterEnd       1148 1.0 2.5797e+01 372.7 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  1  0  0  0  0   1  0  0  0  0     0
+VecNormalize          22 1.0 8.8007e+00 168.0 7.99e+05 1.3 0.0e+00 0.0e+00 2.2e+01  0  0  0  0  1   0  0  0  0  2     6
+MatMult              932 1.0 4.3837e+01 1.7 3.40e+10 1.5 9.3e+05 1.4e+04 1.9e+02  4  5  6  2  6   6  6 13  4 13 44963
+MatMultAdd           192 1.0 1.0493e+01 1.9 2.67e+09 1.4 4.4e+05 2.8e+03 0.0e+00  1  0  3  0  0   1  1  6  0  0 15166
+MatMultTranspose      98 1.0 3.8614e+00 2.0 2.33e+06 2.6 6.4e+05 4.2e+04 1.6e+01  0  0  4  4  0   0  0  9  7  1    28
+MatSolve           13204 2.2 1.2449e+02 14.1 2.46e+11 25.2 1.5e+04 1.0e+02 5.0e+00  5 10  0  0  0   6 12  0  0  0 29631
+MatLUFactorSym        45 2.1 1.4680e+01 13.3 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   1  0  0  0  0     0
+MatLUFactorNum        45 2.1 1.5501e+02 50.0 4.00e+11 47.3 0.0e+00 0.0e+00 0.0e+00  3 14  0  0  0   4 17  0  0  0 33089
+MatResidual           96 1.0 4.0981e+00 1.8 3.30e+09 1.5 1.0e+05 1.3e+04 0.0e+00  0  1  1  0  0   1  1  1  0  0 46481
+MatAssemblyBegin    1816 2.4 1.2062e+01 3.4 1.57e+06 0.0 3.3e+04 7.3e+04 3.4e+01  1  0  0  0  1   1  0  0  1  2     3
+MatAssemblyEnd      1824 2.4 2.9481e+00 1.4 6.81e+06 0.0 6.2e+03 5.2e+01 2.4e+01  0  0  0  0  1   0  0  0  0  2    50
+MatGetRowIJ           44 2.2 1.0878e-01 18.1 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+MatCreateSubMat        4 1.0 7.5410e-04 7.9 0.00e+00 0.0 0.0e+00 0.0e+00 2.0e+00  0  0  0  0  0   0  0  0  0  0     0
+MatGetOrdering        44 2.2 2.8681e-01 26.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+MatZeroEntries        48 2.0 4.1347e-01 3.3 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+MatView               18 1.3 2.9323e-01 6.0 0.00e+00 0.0 0.0e+00 0.0e+00 1.4e+01  0  0  0  0  0   0  0  0  0  1     0
+PCSetUp                4 1.0 4.1939e+02 1.0 4.10e+11 44.0 3.6e+05 3.8e+04 1.9e+02 49 15  2  2  6  64 17  5  4 13 12663
+PCApply               24 1.0 5.9540e+02 1.0 6.77e+11 17.1 7.0e+06 5.1e+04 1.1e+03 69 29 48 50 36  91 34 99 99 80 17911
+PCPATCHCreate          2 1.0 5.5840e+01 101.1 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  1  0  0  0  0   2  0  0  0  0     0
+PCPATCHComputeOp    1734 2.6 1.6818e+02 10.6 2.94e+08 16.9 0.0e+00 0.0e+00 0.0e+00  6  0  0  0  0   7  0  0  0  0    29
+PCPATCHSolve         598 1.0 2.9108e+02 26.3 6.45e+11 35.5 0.0e+00 0.0e+00 0.0e+00  8 24  0  0  0  11 28  0  0  0 30293
+PCPATCHApply         598 1.0 5.0673e+02 1.7 6.46e+11 35.1 4.9e+06 6.4e+04 2.0e+00 54 24 34 45  0  71 28 70 88  0 17439
+PCPATCHPrealloc     1732 2.6 5.5676e+01 111.5 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  1  0  0  0  0   2  0  0  0  0     0
+KSPSolve_FS_0         24 1.0 8.3716e+01 1.0 1.33e+11 9.0 3.3e+06 5.2e+04 4.6e+02 10  7 22 24 14  13  9 47 47 32 31608
+KSPSolve_FS_Schu      24 1.0 1.0868e+01 1.0 1.05e+08 1.1 0.0e+00 0.0e+00 6.6e+01  1  0  0  0  2   2  0  0  0  5   656
+KSPSolve_FS_Low       24 1.0 5.0014e+02 1.0 5.43e+11 22.5 3.6e+06 5.0e+04 6.2e+02 58 22 25 26 19  76 26 52 51 43 15909
+KSPSetUp               7 1.0 3.9660e+02 1.0 4.10e+11 44.0 2.7e+05 4.4e+04 5.6e+01 46 15  2  2  2  61 17  4  3  4 13390
+KSPSolve               1 1.0 5.9880e+02 1.0 6.80e+11 16.3 7.0e+06 5.1e+04 1.4e+03 70 30 48 50 43  91 35 99 99 97 18076
+KSPGMRESOrthog        44 1.0 1.0078e+00 8.5 4.57e+07 1.2 0.0e+00 0.0e+00 4.4e+01  0  0  0  0  1   0  0  0  0  3  2951
+SNESSolve              1 1.0 6.4360e+02 1.0 9.76e+11 3.1 7.0e+06 5.1e+04 1.4e+03 75 85 48 51 45  98 100 100 100 100 48245
+SNESSetUp              1 1.0 3.4458e-03 403.7 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+SNESFunctionEval       1 1.0 1.8748e+00 1.0 7.28e+08 1.1 3.1e+04 5.4e+04 6.0e+00  0  0  0  0  0   0  0  0  0  0 26448
+SNESJacobianEval       1 1.0 4.2476e+01 1.0 2.96e+11 1.1 7.8e+03 3.1e+05 9.0e+00  5 55  0  0  0   6 65  0  1  1 475028
+DMCoarsen              2 1.0 2.3689e+00 1.0 2.64e+03 1.1 0.0e+00 0.0e+00 1.1e+01  0  0  0  0  0   0  0  0  0  1     0
+DMCreateInterp         2 1.0 8.2470e-02 1.2 0.00e+00 0.0 0.0e+00 0.0e+00 4.0e+00  0  0  0  0  0   0  0  0  0  0     0
+DMCreateInject         2 1.0 6.9129e-03 1.3 0.00e+00 0.0 0.0e+00 0.0e+00 4.0e+00  0  0  0  0  0   0  0  0  0  0     0
+DMCreateMat            2 1.0 3.3588e+00 1.1 0.00e+00 0.0 7.2e+03 1.6e+03 3.2e+01  0  0  0  0  1   0  0  0  0  2     0
+CreateMesh             6 1.0 3.1879e-05 5.1 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+CreateFunctionSpace      25 1.0 6.8646e-02 3.4 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.functionspace.make_scalar_element      25 1.0 4.6778e-02 18.1 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.functionspaceimpl.FunctionSpace.__init__      36 1.0 9.1615e-02 6.2 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.functionspacedata.get_shared_data      36 1.0 7.5594e-02 7.1 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.functionspacedata.FunctionSpaceData.__init__      36 1.0 7.5300e-02 7.2 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+FunctionSpaceData: CreateElement      72 1.0 4.3300e-03 1.4 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.dmhooks.set_function_space      17 1.0 1.6990e-03 1.2 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.function.Function.__init__      20 1.0 3.0903e-03 1.7 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.function.Function.assign       6 1.0 9.0952e-03 14.9 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.assign.Assigner.assign       2 1.0 4.9150e-04 2.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.assemble.assemble       3 1.0 1.1240e+01 1.1 2.14e+06 1.1 0.0e+00 0.0e+00 2.0e+01  1  0  0  0  1   2  0  0  0  1    13
+firedrake.tsfc_interface.compile_form       7 1.0 1.8383e+00 1.6 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.formmanipulation.split_form       4 1.0 9.8763e-02 5.8 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.formmanipulation.ExtractSubBlock.split      12 1.0 3.6678e-02 1.6 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.functionspacedata.FunctionSpaceData.get_map      59 1.0 1.9134e-02 42.5 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.mesh.AbstractMeshTopology.measure_set       9 1.0 8.6282e-05 1.6 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.mesh.AbstractMeshTopology.cell_subset       9 1.0 3.4133e-05 1.9 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+ParLoopExecute       214 1.0 5.4829e+01 1.2 2.97e+11 1.1 8.6e+05 3.2e+04 2.1e+01  6 55  6  4  1   7 65 12  8  1 368965
+pyop2.global_kernel.GlobalKernel.compile      18 1.0 2.5738e+01 13.9 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  1  0  0  0  0   2  0  0  0  0     0
+ParLoopRednBegin     214 1.0 2.3463e-03 2.1 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+ParLoopRednEnd       214 1.0 1.1798e-03 2.3 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.functionspaceimpl.WithGeometryBase.sub       2 1.0 2.8374e-05 2.4 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.ufl_expr.TestFunction       4 1.0 2.6240e-04 1.7 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.bcs.BCBase.__init__       6 1.0 1.3816e-04 1.6 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.interpolation.make_interpolator       2 1.0 2.6856e-01 24.3 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.variational_solver.NonlinearVariationalProblem.__init__       5 1.0 5.6639e-02 1.3 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.ufl_expr.derivative       5 1.0 3.6884e-03 1.4 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.ufl_expr.TrialFunction       7 1.0 3.8429e-04 1.5 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.ufl_expr.adjoint       5 1.0 5.0011e-02 1.3 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.solving_utils._SNESContext.__init__       5 1.0 4.2507e-02 1.9 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.cofunction.Cofunction.__init__       9 1.0 1.3396e-03 1.7 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.assemble.allocate_matrix       4 1.0 4.7504e+00 1.1 0.00e+00 0.0 1.1e+04 1.4e+03 6.4e+01  1  0  0  0  2   1  0  0  0  4     0
+CreateSparsity         4 1.0 1.7043e+00 1.1 0.00e+00 0.0 2.3e+03 6.5e+02 2.4e+01  0  0  0  0  1   0  0  0  0  2     0
+MatZeroInitial         4 1.0 1.3970e-01 2.6 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.function.Function.sub       2 1.0 1.1802e-05 2.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.nullspace.VectorSpaceBasis.nullspace       1 1.0 1.3826e-05 2.2 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.variational_solver.NonlinearVariationalSolver.solve       1 1.0 6.4395e+02 1.0 9.76e+11 3.1 7.0e+06 5.1e+04 1.4e+03 75 85 48 51 45  98 100 100 100 100 48219
+ApplyBC                6 1.0 1.8583e-01 1.1 5.29e+05 1.1 0.0e+00 0.0e+00 2.0e+00  0  0  0  0  0   0  0  0  0  0   194
+firedrake.interpolation.SameMeshInterpolator._interpolate       8 1.0 1.1503e+00 3.4 1.60e+06 1.1 0.0e+00 0.0e+00 4.0e+00  0  0  0  0  0   0  0  0  0  0    95
+Parloop_Cells_wrap_expression_kernel     112 1.0 1.8267e+00 5.5 3.78e+07 1.1 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0  1412
+Log_Event_expression_kernel    4587 1.1 2.5237e-02 1.2 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.functionspacedata.FunctionSpaceData.boundary_nodes      24 1.0 5.0457e-02 14.8 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.formmanipulation.ExtractSubBlock.argument      48 1.0 1.9973e-02 1.9 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.halo.Halo.global_to_local_begin     149 1.0 4.7349e-01 2.5 0.00e+00 0.0 6.3e+05 4.4e+04 6.0e+00  0  0  4  4  0   0  0  9  8  0     0
+Parloop_Cells_wrap_form0_cell_integral       2 1.0 8.1389e-01 1.3 4.79e+08 1.1 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0 40141
+Log_Event_form0_cell_integral      44 1.1 9.1112e-02 2.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.halo.Halo.global_to_local_end     149 1.0 5.8736e+00 3.6 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   1  0  0  0  0     0
+Parloop_Cells_wrap_form1_cell_integral       2 1.0 6.7286e-01 1.6 2.47e+08 1.1 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0 25000
+Log_Event_form1_cell_integral      44 1.1 7.9891e-02 3.3 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.halo.Halo.local_to_global_begin     101 1.0 4.1865e-01 2.9 0.00e+00 0.0 4.5e+05 3.6e+03 1.0e+01  0  0  3  0  0   0  0  6  0  1     0
+firedrake.halo.Halo.local_to_global_end     101 1.0 5.9213e-01 4.4 4.09e+06 2.5 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0   335
+firedrake.bcs.BCBase.zero     390 1.0 1.8718e-01 15.6 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.cofunction.Cofunction.sub       2 1.0 3.3055e-03 4.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.functionspaceimpl.FunctionSpace.local_to_global_map      12 1.0 4.2527e-02 17.5 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_Cells_wrap_form00_cell_integral       8 1.0 3.4561e+01 2.0 1.96e+11 1.1 0.0e+00 0.0e+00 0.0e+00  3 37  0  0  0   4 43  0  0  0 386823
+Log_Event_form00_cell_integral     110 1.1 3.1261e+01 2.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  3  0  0  0  0   4  0  0  0  0     0
+Parloop_Cells_wrap_form01_cell_integral       2 1.0 1.8048e+01 7.4 4.99e+10 1.1 0.0e+00 0.0e+00 0.0e+00  1  9  0  0  0   1 11  0  0  0 188620
+Log_Event_form01_cell_integral      44 1.1 2.4416e+00 1.4 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_Cells_wrap_form10_cell_integral       2 1.0 5.7979e+00 1.3 4.99e+10 1.1 0.0e+00 0.0e+00 0.0e+00  1  9  0  0  0   1 11  0  0  0 587143
+Log_Event_form10_cell_integral      44 1.1 4.7037e+00 1.2 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  1  0  0  0  0   1  0  0  0  0     0
+firedrake.dmhooks.create_field_decomposition       1 1.0 5.1683e-02 1.1 1.06e+06 1.1 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0  1395
+firedrake.dmhooks.get_function_space       5 1.0 5.2739e-02 7.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.solving_utils._SNESContext.split       1 1.0 4.7519e-02 1.1 1.06e+06 1.1 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0  1517
+firedrake.bcs.DirichletBC.reconstruct       6 1.0 3.0769e-04 1.4 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.bcs.BCBase.as_subspace       4 1.0 4.8461e-05 2.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+GetLineElements        1 1.0 7.7184e-03 92.4 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_Cells_wrap_weight       2 1.0 8.3471e-02 1.1 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_Cells_wrap_restriction      98 1.0 1.9367e-01 1.8 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Log_Event_subspace_form_cell_integral     832 10.4 1.5682e+02 10.4 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  5  0  0  0  0   7  0  0  0  0     0
+PatchPC0_size=1534203       1 1.0 3.7272e+02 2.2 4.01e+11 47.2 1.6e+04 7.9e+04 1.0e+00 38 14  0  0  0  50 17  0  0  0 13794
+PatchPC_size=1534203     298 1.0 1.3519e+02 1.1 2.45e+11 24.8 2.4e+06 1.3e+05 0.0e+00 16 10 17 44  0  20 12 35 86  0 27334
+firedrake.dmhooks.coarsen       1 1.0 2.3100e+00 1.0 2.64e+03 1.1 0.0e+00 0.0e+00 7.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.mg.embedded.TransferManager.op      51 1.0 9.4880e+00 1.5 2.64e+03 1.1 2.0e+05 3.7e+02 3.0e+00  1  0  1  0  0   1  0  3  0  0     0
+firedrake.mg.interface.inject       2 1.0 4.0530e+00 1.8 2.64e+03 1.1 4.1e+03 1.3e+03 1.0e+00  0  0  0  0  0   1  0  0  0  0     0
+firedrake.pointquery_utils.to_reference_coords_newton_step       3 1.0 5.8056e-01 2.6 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x149b6267bbe0_wrap_pyop2_kernel_inject       4 0.0 8.6043e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.mg.interface.restrict      49 1.0 7.6789e-01 1.0 3.34e+05 14.8 2.2e+05 3.3e+02 6.0e+00  0  0  1  0  0   0  0  3  0  0    12
+Parloop_set_#x149b65781a20_wrap_pyop2_kernel_restrict      98 0.0 7.7394e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+PatchPC0_size=15243       1 1.0 1.4135e-01 1.8 5.12e+05 16.4 1.6e+04 8.1e+02 1.0e+00  0  0  0  0  0   0  0  0  0  0    51
+PatchPC_size=15243     298 1.0 2.7330e-01 1.2 2.14e+07 7.3 2.4e+06 1.3e+03 0.0e+00  0  0 17  0  0   0  0 35  1  0  1699
+firedrake.ufl_expr.action       1 1.0 8.8512e-03 1.7 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.mg.interface.prolong      48 1.0 5.6322e+00 2.1 0.00e+00 0.0 2.0e+05 3.5e+02 0.0e+00  0  0  1  0  0   1  0  3  0  0     0
+Parloop_set_#x149b65781a20_wrap_pyop2_kernel_prolong      96 0.0 6.4020e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_Cells_wrap_slate_wrapper       2 1.0 8.8850e+00 10.3 2.13e+06 1.1 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0    16
+Log_Event_subkernel0_cell_to__cell_integral      44 1.1 5.6526e-01 1.6 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Log_Event_slate_wrapper      44 1.1 1.0675e+00 1.5 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Log_Event_inits_slate_wrapper      44 1.1 1.0751e-03 2.4 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Log_Event_slate_loopy      44 1.1 3.2655e-01 2.3 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+inv_memcpy            44 1.1 1.2337e-03 1.9 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+inv_getrf             44 1.1 2.0848e-01 4.7 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+inv_getri             44 1.1 1.1590e-01 1.7 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.constant.Constant.evaluate      24 1.0 6.4667e-04 2.4 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14e074e25570_wrap_pyop2_kernel_inject       4 0.0 8.6062e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14e077f3d810_wrap_pyop2_kernel_restrict      98 0.0 7.9094e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14e077f3d810_wrap_pyop2_kernel_prolong      96 0.0 6.4291e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14585a7c4df0_wrap_pyop2_kernel_inject       4 0.0 8.6027e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14585d6d9e70_wrap_pyop2_kernel_restrict      98 0.0 7.8838e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14585d6d9e70_wrap_pyop2_kernel_prolong      96 0.0 6.4065e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14dc1c9104f0_wrap_pyop2_kernel_inject       4 0.0 8.6060e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14dc1fa19a80_wrap_pyop2_kernel_restrict      98 0.0 7.9199e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14dc1fa19a80_wrap_pyop2_kernel_prolong      96 0.0 6.4346e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1533e19893c0_wrap_pyop2_kernel_inject       4 0.0 8.5953e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1533e4a99bd0_wrap_pyop2_kernel_restrict      98 0.0 7.5928e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1533e4a99bd0_wrap_pyop2_kernel_prolong      96 0.0 6.4093e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1520c9329030_wrap_pyop2_kernel_inject       4 0.0 8.6075e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1520cc431bd0_wrap_pyop2_kernel_restrict      98 0.0 7.8845e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1520cc431bd0_wrap_pyop2_kernel_prolong      96 0.0 6.4465e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14c7dc5e5630_wrap_pyop2_kernel_inject       4 0.0 8.6023e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14c7f8e214b0_wrap_pyop2_kernel_restrict      98 0.0 7.8546e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14c7f8e214b0_wrap_pyop2_kernel_prolong      96 0.0 6.4235e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14d69a320fa0_wrap_pyop2_kernel_inject       4 0.0 8.6032e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14d6af0fe080_wrap_pyop2_kernel_restrict      98 0.0 7.9603e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14d6af0fe080_wrap_pyop2_kernel_prolong      96 0.0 6.4809e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x15507946d300_wrap_pyop2_kernel_inject       4 0.0 8.6056e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1550816adff0_wrap_pyop2_kernel_restrict      98 0.0 7.9707e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1550816adff0_wrap_pyop2_kernel_prolong      96 0.0 6.3964e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x153103ed5120_wrap_pyop2_kernel_inject       4 0.0 8.6011e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x153106fe1450_wrap_pyop2_kernel_restrict      98 0.0 7.9587e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x153106fe1450_wrap_pyop2_kernel_prolong      96 0.0 6.3830e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14a73f629090_wrap_pyop2_kernel_inject       4 0.0 8.6073e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14a7427356c0_wrap_pyop2_kernel_restrict      98 0.0 7.9364e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14a7427356c0_wrap_pyop2_kernel_prolong      96 0.0 6.3669e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14f48dcb56f0_wrap_pyop2_kernel_inject       4 0.0 8.6017e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14f490dcd450_wrap_pyop2_kernel_restrict      98 0.0 7.9750e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14f490dcd450_wrap_pyop2_kernel_prolong      96 0.0 6.4124e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14a27d341450_wrap_pyop2_kernel_inject       4 0.0 1.0701e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14a28045a170_wrap_pyop2_kernel_restrict      98 0.0 1.0158e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14a28045a170_wrap_pyop2_kernel_prolong      96 0.0 5.5843e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1544fee59270_wrap_pyop2_kernel_inject       4 0.0 1.0713e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x154501f6d570_wrap_pyop2_kernel_restrict      98 0.0 1.0347e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x154501f6d570_wrap_pyop2_kernel_prolong      96 0.0 5.5832e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x146a9ca4d0f0_wrap_pyop2_kernel_inject       4 0.0 1.0707e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x146a9fb5e110_wrap_pyop2_kernel_restrict      98 0.0 1.0198e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x146a9fb5e110_wrap_pyop2_kernel_prolong      96 0.0 5.5837e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14ca59750c10_wrap_pyop2_kernel_inject       4 0.0 1.0706e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14ca68ffdbd0_wrap_pyop2_kernel_restrict      98 0.0 1.0350e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14ca68ffdbd0_wrap_pyop2_kernel_prolong      96 0.0 5.5847e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1553eef01000_wrap_pyop2_kernel_inject       4 0.0 1.0717e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1553f9031e40_wrap_pyop2_kernel_restrict      98 0.0 1.0275e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1553f9031e40_wrap_pyop2_kernel_prolong      96 0.0 5.5842e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14b06c8514b0_wrap_pyop2_kernel_inject       4 0.0 1.0704e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14b074805e10_wrap_pyop2_kernel_restrict      98 0.0 1.0339e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14b074805e10_wrap_pyop2_kernel_prolong      96 0.0 5.5856e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x149f435dd120_wrap_pyop2_kernel_inject       4 0.0 1.0706e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x149f466f5990_wrap_pyop2_kernel_restrict      98 0.0 1.0151e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x149f466f5990_wrap_pyop2_kernel_prolong      96 0.0 5.5840e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x150506665210_wrap_pyop2_kernel_inject       4 0.0 1.0718e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x150508aeded0_wrap_pyop2_kernel_restrict      98 0.0 1.0367e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x150508aeded0_wrap_pyop2_kernel_prolong      96 0.0 5.5856e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x150d8fb75390_wrap_pyop2_kernel_inject       4 0.0 1.0716e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x150d91ff5f90_wrap_pyop2_kernel_restrict      98 0.0 1.0592e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x150d91ff5f90_wrap_pyop2_kernel_prolong      96 0.0 5.5810e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1461d38fcca0_wrap_pyop2_kernel_inject       4 0.0 1.0719e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1461d6a11720_wrap_pyop2_kernel_restrict      98 0.0 1.0556e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1461d6a11720_wrap_pyop2_kernel_prolong      96 0.0 5.5830e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14ba109b8d00_wrap_pyop2_kernel_inject       4 0.0 1.0720e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14ba205c1900_wrap_pyop2_kernel_restrict      98 0.0 1.0510e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14ba205c1900_wrap_pyop2_kernel_prolong      96 0.0 5.5829e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14a163345000_wrap_pyop2_kernel_inject       4 0.0 1.0726e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14a166456050_wrap_pyop2_kernel_restrict      98 0.0 1.0602e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14a166456050_wrap_pyop2_kernel_prolong      96 0.0 5.5826e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1499704e52d0_wrap_pyop2_kernel_inject       4 0.0 1.1215e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1499735f5cc0_wrap_pyop2_kernel_restrict      98 0.0 2.9647e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1499735f5cc0_wrap_pyop2_kernel_prolong      96 0.0 2.9502e+00 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14ba057acb20_wrap_pyop2_kernel_inject       4 0.0 1.1211e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14ba088bded0_wrap_pyop2_kernel_restrict      98 0.0 2.9610e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14ba088bded0_wrap_pyop2_kernel_prolong      96 0.0 2.9569e+00 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14eb32389030_wrap_pyop2_kernel_inject       4 0.0 1.1212e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14eb3c4b9f30_wrap_pyop2_kernel_restrict      98 0.0 2.9061e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14eb3c4b9f30_wrap_pyop2_kernel_prolong      96 0.0 2.9570e+00 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14ac95461360_wrap_pyop2_kernel_inject       4 0.0 1.1208e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14ac985698a0_wrap_pyop2_kernel_restrict      98 0.0 2.9252e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14ac985698a0_wrap_pyop2_kernel_prolong      96 0.0 2.9575e+00 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14cd14ca8f40_wrap_pyop2_kernel_inject       4 0.0 1.1230e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14cd17122020_wrap_pyop2_kernel_restrict      98 0.0 2.9497e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14cd17122020_wrap_pyop2_kernel_prolong      96 0.0 2.9572e+00 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x15372056d9f0_wrap_pyop2_kernel_inject       4 0.0 1.1219e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1537229eda20_wrap_pyop2_kernel_restrict      98 0.0 2.9333e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1537229eda20_wrap_pyop2_kernel_prolong      96 0.0 2.9571e+00 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1511f09f5210_wrap_pyop2_kernel_inject       4 0.0 1.1214e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1511f2e71a80_wrap_pyop2_kernel_restrict      98 0.0 2.9225e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1511f2e71a80_wrap_pyop2_kernel_prolong      96 0.0 2.9573e+00 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x146545d85420_wrap_pyop2_kernel_inject       4 0.0 1.1206e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x146549689f00_wrap_pyop2_kernel_restrict      98 0.0 2.9708e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x146549689f00_wrap_pyop2_kernel_prolong      96 0.0 2.9572e+00 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14eea2ac50f0_wrap_pyop2_kernel_inject       4 0.0 1.1234e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14eea5bd9e10_wrap_pyop2_kernel_restrict      98 0.0 3.1501e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14eea5bd9e10_wrap_pyop2_kernel_prolong      96 0.0 2.9501e+00 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x153faee352d0_wrap_pyop2_kernel_inject       4 0.0 1.1237e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x153fb1f45690_wrap_pyop2_kernel_restrict      98 0.0 3.3494e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x153fb1f45690_wrap_pyop2_kernel_prolong      96 0.0 2.9569e+00 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14f910c796f0_wrap_pyop2_kernel_inject       4 0.0 1.1229e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14f914581f90_wrap_pyop2_kernel_restrict      98 0.0 3.1663e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14f914581f90_wrap_pyop2_kernel_prolong      96 0.0 2.9568e+00 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14e03a0a95d0_wrap_pyop2_kernel_inject       4 0.0 1.1227e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14e042229ff0_wrap_pyop2_kernel_restrict      98 0.0 3.1661e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14e042229ff0_wrap_pyop2_kernel_prolong      96 0.0 2.9504e+00 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14a96d83ce20_wrap_pyop2_kernel_inject       4 0.0 7.9130e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14a97094d330_wrap_pyop2_kernel_restrict      98 0.0 1.0552e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14a97094d330_wrap_pyop2_kernel_prolong      96 0.0 5.1622e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x145ee8615900_wrap_pyop2_kernel_inject       4 0.0 7.9154e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x145eeb536020_wrap_pyop2_kernel_restrict      98 0.0 1.0730e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x145eeb536020_wrap_pyop2_kernel_prolong      96 0.0 5.1654e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x150acf469210_wrap_pyop2_kernel_inject       4 0.0 7.9006e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x150ad25716c0_wrap_pyop2_kernel_restrict      98 0.0 1.0638e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x150ad25716c0_wrap_pyop2_kernel_prolong      96 0.0 5.1609e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1547c8a511e0_wrap_pyop2_kernel_inject       4 0.0 7.9156e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1547cbb5d8d0_wrap_pyop2_kernel_restrict      98 0.0 1.0738e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1547cbb5d8d0_wrap_pyop2_kernel_prolong      96 0.0 5.1657e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14aee896cdf0_wrap_pyop2_kernel_inject       4 0.0 7.9158e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14aef2a9d5d0_wrap_pyop2_kernel_restrict      98 0.0 1.0675e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14aef2a9d5d0_wrap_pyop2_kernel_prolong      96 0.0 5.1631e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1540f46b4fd0_wrap_pyop2_kernel_inject       4 0.0 7.9213e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1540f77c5990_wrap_pyop2_kernel_restrict      98 0.0 1.0731e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1540f77c5990_wrap_pyop2_kernel_prolong      96 0.0 5.1633e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1490563d0ee0_wrap_pyop2_kernel_inject       4 0.0 7.9102e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14905884da80_wrap_pyop2_kernel_restrict      98 0.0 1.0651e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14905884da80_wrap_pyop2_kernel_prolong      96 0.0 5.1610e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14b8c6e74b20_wrap_pyop2_kernel_inject       4 0.0 7.8979e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14b8c9f85c00_wrap_pyop2_kernel_restrict      98 0.0 1.0581e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14b8c9f85c00_wrap_pyop2_kernel_prolong      96 0.0 5.1622e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x153baf341030_wrap_pyop2_kernel_inject       4 0.0 7.9259e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x153bb7439bd0_wrap_pyop2_kernel_restrict      98 0.0 1.0820e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x153bb7439bd0_wrap_pyop2_kernel_prolong      96 0.0 5.1615e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14dfc1f55120_wrap_pyop2_kernel_inject       4 0.0 7.9314e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14dfc506d750_wrap_pyop2_kernel_restrict      98 0.0 1.0772e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14dfc506d750_wrap_pyop2_kernel_prolong      96 0.0 5.1602e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14b1146a4e50_wrap_pyop2_kernel_inject       4 0.0 7.9267e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14b1177add80_wrap_pyop2_kernel_restrict      98 0.0 1.0719e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14b1177add80_wrap_pyop2_kernel_prolong      96 0.0 5.1582e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14982ade1120_wrap_pyop2_kernel_inject       4 0.0 7.9386e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14982def9870_wrap_pyop2_kernel_restrict      98 0.0 1.0707e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14982def9870_wrap_pyop2_kernel_prolong      96 0.0 5.1605e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x147d82a8d120_wrap_pyop2_kernel_inject       4 0.0 8.0565e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x147d863857b0_wrap_pyop2_kernel_restrict      98 0.0 9.7289e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x147d863857b0_wrap_pyop2_kernel_prolong      96 0.0 5.3254e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x151e43ed1300_wrap_pyop2_kernel_inject       4 0.0 8.0569e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x151e6a73d690_wrap_pyop2_kernel_restrict      98 0.0 9.9498e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x151e6a73d690_wrap_pyop2_kernel_prolong      96 0.0 5.3259e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x15203cac1480_wrap_pyop2_kernel_inject       4 0.0 8.0574e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x15203e551960_wrap_pyop2_kernel_restrict      98 0.0 9.8825e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x15203e551960_wrap_pyop2_kernel_prolong      96 0.0 5.3226e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14da44a7d240_wrap_pyop2_kernel_inject       4 0.0 8.0649e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14da47b91840_wrap_pyop2_kernel_restrict      98 0.0 9.8551e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14da47b91840_wrap_pyop2_kernel_prolong      96 0.0 5.3249e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14cfbab35570_wrap_pyop2_kernel_inject       4 0.0 8.0542e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14cfe0931f00_wrap_pyop2_kernel_restrict      98 0.0 1.1627e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14cfe0931f00_wrap_pyop2_kernel_prolong      96 0.0 5.3225e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14bb509a1210_wrap_pyop2_kernel_inject       4 0.0 8.0562e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14bb765716c0_wrap_pyop2_kernel_restrict      98 0.0 9.5675e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14bb765716c0_wrap_pyop2_kernel_prolong      96 0.0 5.3254e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1458ec0a1300_wrap_pyop2_kernel_inject       4 0.0 8.0508e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1458ef1ba0e0_wrap_pyop2_kernel_restrict      98 0.0 9.8282e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1458ef1ba0e0_wrap_pyop2_kernel_prolong      96 0.0 5.3238e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x148c01ca4df0_wrap_pyop2_kernel_inject       4 0.0 8.0518e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x148c04121630_wrap_pyop2_kernel_restrict      98 0.0 9.8324e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x148c04121630_wrap_pyop2_kernel_prolong      96 0.0 5.3253e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14bf25db5630_wrap_pyop2_kernel_inject       4 0.0 8.0548e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14bf28ed20e0_wrap_pyop2_kernel_restrict      98 0.0 9.4020e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14bf28ed20e0_wrap_pyop2_kernel_prolong      96 0.0 5.3224e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x15125b5454e0_wrap_pyop2_kernel_inject       4 0.0 8.0575e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x15125e55d780_wrap_pyop2_kernel_restrict      98 0.0 9.0922e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x15125e55d780_wrap_pyop2_kernel_prolong      96 0.0 5.3220e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x149d279ad120_wrap_pyop2_kernel_inject       4 0.0 8.0501e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x149d31ad9780_wrap_pyop2_kernel_restrict      98 0.0 9.2348e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x149d31ad9780_wrap_pyop2_kernel_prolong      96 0.0 5.3234e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1496b08fdb40_wrap_pyop2_kernel_inject       4 0.0 8.0520e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1496b3a19e70_wrap_pyop2_kernel_restrict      98 0.0 9.2179e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1496b3a19e70_wrap_pyop2_kernel_prolong      96 0.0 5.3236e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14f3529e1090_wrap_pyop2_kernel_inject       4 0.0 1.0988e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14f355aee0e0_wrap_pyop2_kernel_restrict      98 0.0 1.0474e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14f355aee0e0_wrap_pyop2_kernel_prolong      96 0.0 6.1819e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14d9a1a5d120_wrap_pyop2_kernel_inject       4 0.0 1.0981e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14da22fdd810_wrap_pyop2_kernel_restrict      98 0.0 1.0767e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14da22fdd810_wrap_pyop2_kernel_prolong      96 0.0 6.1788e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x149794db90c0_wrap_pyop2_kernel_inject       4 0.0 1.0984e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14981f4595d0_wrap_pyop2_kernel_restrict      98 0.0 1.0494e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14981f4595d0_wrap_pyop2_kernel_prolong      96 0.0 6.1826e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14abdfb95510_wrap_pyop2_kernel_inject       4 0.0 1.0978e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14abe2ba9de0_wrap_pyop2_kernel_restrict      98 0.0 1.0769e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14abe2ba9de0_wrap_pyop2_kernel_prolong      96 0.0 6.1797e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x153367bd1540_wrap_pyop2_kernel_inject       4 0.0 1.0986e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x15336b4cd5d0_wrap_pyop2_kernel_restrict      98 0.0 1.0576e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x15336b4cd5d0_wrap_pyop2_kernel_prolong      96 0.0 6.1841e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x150edaebd6f0_wrap_pyop2_kernel_inject       4 0.0 1.0981e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x150edd3454b0_wrap_pyop2_kernel_restrict      98 0.0 1.0740e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x150edd3454b0_wrap_pyop2_kernel_prolong      96 0.0 6.1822e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x149beb708ca0_wrap_pyop2_kernel_inject       4 0.0 1.0973e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x149c00ab9b40_wrap_pyop2_kernel_restrict      98 0.0 1.0633e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x149c00ab9b40_wrap_pyop2_kernel_prolong      96 0.0 6.1853e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x154ae6b254e0_wrap_pyop2_kernel_inject       4 0.0 1.0981e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x154aeec49f60_wrap_pyop2_kernel_restrict      98 0.0 1.0687e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x154aeec49f60_wrap_pyop2_kernel_prolong      96 0.0 6.1857e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x154eba0455a0_wrap_pyop2_kernel_inject       4 0.0 1.0977e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x154ebd15e020_wrap_pyop2_kernel_restrict      98 0.0 1.0891e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x154ebd15e020_wrap_pyop2_kernel_prolong      96 0.0 6.1771e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x15202e6b1090_wrap_pyop2_kernel_inject       4 0.0 1.0962e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1520419e5ed0_wrap_pyop2_kernel_restrict      98 0.0 1.0885e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1520419e5ed0_wrap_pyop2_kernel_prolong      96 0.0 6.1812e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x152cfa58d030_wrap_pyop2_kernel_inject       4 0.0 1.0973e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x152cfde851b0_wrap_pyop2_kernel_restrict      98 0.0 1.0865e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x152cfde851b0_wrap_pyop2_kernel_prolong      96 0.0 6.1752e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1534fb2c95d0_wrap_pyop2_kernel_inject       4 0.0 1.0976e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x15355c2a16f0_wrap_pyop2_kernel_restrict      98 0.0 1.0855e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x15355c2a16f0_wrap_pyop2_kernel_prolong      96 0.0 6.1816e-01 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+
+--- Event Stage 2: Warm Solve: k=10 nref=1
+
+SFBcastBegin         722 1.0 2.0453e+00 3.5 0.00e+00 0.0 3.0e+06 6.0e+04 0.0e+00  0  0 20 25  0   1  0 45 52  0     0
+SFBcastEnd           722 1.0 7.7925e+00 2.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  1  0  0  0  0   3  0  0  0  0     0
+SFReduceBegin        674 1.0 1.7654e+00 9.9 0.00e+00 0.0 2.8e+06 5.5e+04 0.0e+00  0  0 19 22  0   0  0 42 44  0     0
+SFReduceEnd          674 1.0 1.1581e+02 36.5 3.80e+08 2.6 0.0e+00 0.0e+00 0.0e+00 10  0  0  0  0  49  0  0  0  0   164
+SFPack              2524 1.0 3.4299e+00 5.2 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   1  0  0  0  0     0
+SFUnpack            2524 1.0 6.7732e+00 5.2 3.80e+08 2.6 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   2  0  0  0  0  2805
+VecMDot               24 1.0 8.3742e-01 17.5 2.02e+07 1.2 0.0e+00 0.0e+00 2.4e+01  0  0  0  0  1   0  0  0  0  2  1572
+VecNorm              841 1.0 1.2506e+01 16.0 2.26e+07 1.3 0.0e+00 0.0e+00 8.4e+02  1  0  0  0 26   3  0  0  0 69   116
+VecScale              73 1.0 5.3773e-03 18.8 1.30e+06 1.2 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0 16093
+VecShift              24 1.0 1.8360e-04 1.4 2.32e+05 1.1 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0 86273
+VecCopy              436 1.0 1.0651e-02 2.4 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+VecSet              1394 1.0 1.3722e+00 4.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+VecAXPY              170 1.0 3.1204e-02 10.3 5.90e+06 1.3 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0 12128
+VecAYPX             1008 1.0 3.7225e-02 3.1 1.51e+07 1.3 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0 25954
+VecAXPBYCZ           384 1.0 5.4264e-02 6.9 2.33e+07 1.3 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0 27412
+VecMAXPY              25 1.0 2.8528e-02 3.5 2.18e+07 1.2 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0 49841
+VecScatterBegin     1128 1.0 3.5483e-01 9.8 0.00e+00 0.0 9.3e+05 1.4e+04 0.0e+00  0  0  6  2  0   0  0 14  4  0     0
+VecScatterEnd       1128 1.0 2.0456e+01 286.1 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  1  0  0  0  0   4  0  0  0  0     0
+MatMult              912 1.0 3.8740e+01 1.5 3.33e+10 1.5 9.1e+05 1.4e+04 1.9e+02  4  5  6  2  6  20 35 14  4 16 49855
+MatMultAdd           192 1.0 3.2806e+00 1.3 2.67e+09 1.4 4.4e+05 2.8e+03 0.0e+00  0  0  3  0  0   2  3  7  0  0 48510
+MatMultTranspose      96 1.0 3.0612e+00 2.4 1.03e+06 3.4 5.9e+05 4.3e+04 0.0e+00  0  0  4  4  0   1  0  9  7  0    13
+MatSolve           12720 2.2 1.1894e+02 14.7 2.36e+11 25.2 1.4e+04 1.1e+02 0.0e+00  4 10  0  0  0  22 64  0  0  0 29873
+MatResidual           96 1.0 4.0827e+00 1.8 3.30e+09 1.5 1.0e+05 1.3e+04 0.0e+00  0  1  1  0  0   2  3  2  0  0 46656
+MatView               18 1.3 1.8215e-01 3.9 0.00e+00 0.0 0.0e+00 0.0e+00 1.4e+01  0  0  0  0  0   0  0  0  0  1     0
+PCApply               24 1.0 1.6789e+02 1.0 2.67e+11 8.8 6.6e+06 5.1e+04 9.6e+02 20 15 45 48 30  97 96 99 99 79 31888
+PCPATCHSolve         576 1.0 1.1879e+02 16.8 2.36e+11 25.2 0.0e+00 0.0e+00 0.0e+00  4 10  0  0  0  22 64  0  0  0 29909
+PCPATCHApply         576 1.0 1.3007e+02 1.1 2.37e+11 24.8 4.7e+06 6.4e+04 0.0e+00 15 10 32 43  0  74 64 71 88  0 27460
+KSPSolve_FS_0         24 1.0 8.3075e+01 1.0 1.33e+11 9.0 3.3e+06 5.2e+04 4.6e+02 10  7 22 24 14  48 48 49 50 37 31852
+KSPSolve_FS_Schu      24 1.0 4.0986e-01 2.9 1.02e+08 1.1 0.0e+00 0.0e+00 4.8e+01  0  0  0  0  2   0  0  0  0  4 17044
+KSPSolve_FS_Low       24 1.0 8.3719e+01 1.0 1.33e+11 9.0 3.3e+06 5.2e+04 4.6e+02 10  7 22 24 14  48 48 49 50 37 31606
+KSPSetUp               1 1.0 1.8285e-02 261208.2 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+KSPSolve               1 1.0 1.7146e+02 1.0 2.70e+11 8.4 6.6e+06 5.1e+04 1.2e+03 20 15 45 48 38  99 99 100 100 99 32154
+KSPGMRESOrthog        24 1.0 8.4953e-01 13.8 4.03e+07 1.2 0.0e+00 0.0e+00 2.4e+01  0  0  0  0  1   0  0  0  0  2  3099
+SNESSolve              1 1.0 1.7269e+02 1.0 2.71e+11 8.2 6.6e+06 5.1e+04 1.2e+03 20 15 45 48 38 100 100 100 100 100 32211
+SNESFunctionEval       1 1.0 1.0675e+00 1.6 7.28e+08 1.1 1.6e+04 9.5e+04 0.0e+00  0  0  0  0  0   1  1  0  0  0 46450
+firedrake.function.Function.assign       2 1.0 9.8353e-02 168.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.assign.Assigner.assign       2 1.0 9.7586e-02 300.4 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+ParLoopExecute       196 1.0 3.7345e+00 1.9 7.64e+08 1.1 7.9e+05 3.3e+04 0.0e+00  0  0  5  4  0   2  1 12  8  0 13935
+ParLoopRednBegin     196 1.0 2.0006e-03 2.6 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+ParLoopRednEnd       196 1.0 1.1663e-03 2.9 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.function.Function.sub       2 1.0 2.3164e-05 3.4 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.variational_solver.NonlinearVariationalSolver.solve       1 1.0 1.7284e+02 1.0 2.71e+11 8.2 6.6e+06 5.1e+04 1.2e+03 20 15 45 48 38 100 100 100 100 100 32182
+ApplyBC                2 1.0 1.2428e-01 95.8 5.29e+05 1.1 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0   290
+firedrake.interpolation.SameMeshInterpolator._interpolate       2 1.0 2.5733e-02 44.3 5.29e+05 1.1 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0  1400
+Parloop_Cells_wrap_expression_kernel     100 1.0 5.9415e-02 8.1 3.68e+07 1.1 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0 42196
+Log_Event_expression_kernel    4312 1.1 2.4557e-02 1.2 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.halo.Halo.global_to_local_begin     146 1.0 1.9418e-01 5.6 0.00e+00 0.0 6.0e+05 4.3e+04 0.0e+00  0  0  4  4  0   0  0  9  8  0     0
+Parloop_Cells_wrap_form0_cell_integral       2 1.0 4.9638e-01 10.3 4.79e+08 1.1 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  1  0  0  0 65817
+Log_Event_form0_cell_integral      44 1.1 1.0780e-01 3.4 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.halo.Halo.global_to_local_end     146 1.0 2.8925e+00 3.3 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   1  0  0  0  0     0
+Parloop_Cells_wrap_form1_cell_integral       2 1.0 3.7867e-01 6.2 2.47e+08 1.1 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0 44422
+Log_Event_form1_cell_integral      44 1.1 7.8959e-02 4.1 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.halo.Halo.local_to_global_begin      98 1.0 5.6521e-02 4.4 0.00e+00 0.0 4.0e+05 2.7e+03 0.0e+00  0  0  3  0  0   0  0  6  0  0     0
+firedrake.halo.Halo.local_to_global_end      98 1.0 7.0227e-01 4.5 2.80e+06 2.5 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0   189
+firedrake.bcs.BCBase.zero     386 1.0 1.0427e-01 12.6 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.cofunction.Cofunction.sub       2 1.0 2.6370e-04 14.6 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_Cells_wrap_restriction      96 1.0 1.0383e-01 2.6 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+PatchPC_size=1534203     288 1.0 1.2999e+02 1.1 2.37e+11 24.8 2.4e+06 1.3e+05 0.0e+00 15 10 16 42  0  74 64 36 87  0 27474
+firedrake.mg.embedded.TransferManager.op      48 1.0 5.7623e-02 1.7 0.00e+00 0.0 2.0e+05 3.5e+02 0.0e+00  0  0  1  0  0   0  0  3  0  0     0
+firedrake.mg.interface.restrict      48 1.0 1.5455e-01 1.1 3.17e+05 25.0 2.0e+05 3.5e+02 0.0e+00  0  0  1  0  0   0  0  3  0  0    55
+Parloop_set_#x149b65781a20_wrap_pyop2_kernel_restrict      96 0.0 2.0919e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+PatchPC_size=15243     288 1.0 1.2412e-01 1.2 2.07e+07 7.3 2.4e+06 1.3e+03 0.0e+00  0  0 16  0  0   0  0 36  1  0  3616
+firedrake.mg.interface.prolong      48 1.0 5.4987e-02 1.7 0.00e+00 0.0 2.0e+05 3.5e+02 0.0e+00  0  0  1  0  0   0  0  3  0  0     0
+Parloop_set_#x149b65781a20_wrap_pyop2_kernel_prolong      96 0.0 1.7059e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+firedrake.constant.Constant.evaluate      24 1.0 8.1104e-04 3.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14e077f3d810_wrap_pyop2_kernel_restrict      96 0.0 2.2917e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14e077f3d810_wrap_pyop2_kernel_prolong      96 0.0 1.8488e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14585d6d9e70_wrap_pyop2_kernel_restrict      96 0.0 2.0708e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14585d6d9e70_wrap_pyop2_kernel_prolong      96 0.0 1.6626e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14dc1fa19a80_wrap_pyop2_kernel_restrict      96 0.0 2.4260e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14dc1fa19a80_wrap_pyop2_kernel_prolong      96 0.0 1.8945e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1533e4a99bd0_wrap_pyop2_kernel_restrict      96 0.0 2.1554e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1533e4a99bd0_wrap_pyop2_kernel_prolong      96 0.0 1.7248e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1520cc431bd0_wrap_pyop2_kernel_restrict      96 0.0 2.5096e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1520cc431bd0_wrap_pyop2_kernel_prolong      96 0.0 2.0318e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14c7f8e214b0_wrap_pyop2_kernel_restrict      96 0.0 2.5253e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14c7f8e214b0_wrap_pyop2_kernel_prolong      96 0.0 2.0850e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14d6af0fe080_wrap_pyop2_kernel_restrict      96 0.0 2.7955e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14d6af0fe080_wrap_pyop2_kernel_prolong      96 0.0 2.4160e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1550816adff0_wrap_pyop2_kernel_restrict      96 0.0 2.3486e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1550816adff0_wrap_pyop2_kernel_prolong      96 0.0 1.6062e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x153106fe1450_wrap_pyop2_kernel_restrict      96 0.0 1.8369e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x153106fe1450_wrap_pyop2_kernel_prolong      96 0.0 1.4555e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14a7427356c0_wrap_pyop2_kernel_restrict      96 0.0 1.9104e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14a7427356c0_wrap_pyop2_kernel_prolong      96 0.0 1.4672e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14f490dcd450_wrap_pyop2_kernel_restrict      96 0.0 2.3201e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14f490dcd450_wrap_pyop2_kernel_prolong      96 0.0 1.8545e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14a28045a170_wrap_pyop2_kernel_restrict      96 0.0 2.2097e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14a28045a170_wrap_pyop2_kernel_prolong      96 0.0 1.9800e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x154501f6d570_wrap_pyop2_kernel_restrict      96 0.0 2.2765e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x154501f6d570_wrap_pyop2_kernel_prolong      96 0.0 1.8165e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x146a9fb5e110_wrap_pyop2_kernel_restrict      96 0.0 2.2564e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x146a9fb5e110_wrap_pyop2_kernel_prolong      96 0.0 1.8200e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14ca68ffdbd0_wrap_pyop2_kernel_restrict      96 0.0 2.5296e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14ca68ffdbd0_wrap_pyop2_kernel_prolong      96 0.0 1.9806e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1553f9031e40_wrap_pyop2_kernel_restrict      96 0.0 2.3585e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1553f9031e40_wrap_pyop2_kernel_prolong      96 0.0 1.7983e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14b074805e10_wrap_pyop2_kernel_restrict      96 0.0 2.5011e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14b074805e10_wrap_pyop2_kernel_prolong      96 0.0 1.8846e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x149f466f5990_wrap_pyop2_kernel_restrict      96 0.0 2.2913e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x149f466f5990_wrap_pyop2_kernel_prolong      96 0.0 1.7978e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x150508aeded0_wrap_pyop2_kernel_restrict      96 0.0 2.4876e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x150508aeded0_wrap_pyop2_kernel_prolong      96 0.0 2.1674e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x150d91ff5f90_wrap_pyop2_kernel_restrict      96 0.0 2.1688e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x150d91ff5f90_wrap_pyop2_kernel_prolong      96 0.0 1.7223e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1461d6a11720_wrap_pyop2_kernel_restrict      96 0.0 2.3240e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1461d6a11720_wrap_pyop2_kernel_prolong      96 0.0 1.9391e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14ba205c1900_wrap_pyop2_kernel_restrict      96 0.0 2.0539e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14ba205c1900_wrap_pyop2_kernel_prolong      96 0.0 1.6418e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14a166456050_wrap_pyop2_kernel_restrict      96 0.0 2.3904e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14a166456050_wrap_pyop2_kernel_prolong      96 0.0 1.7353e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1499735f5cc0_wrap_pyop2_kernel_restrict      96 0.0 1.3930e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1499735f5cc0_wrap_pyop2_kernel_prolong      96 0.0 1.8704e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14ba088bded0_wrap_pyop2_kernel_restrict      96 0.0 1.3963e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14ba088bded0_wrap_pyop2_kernel_prolong      96 0.0 1.8566e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14eb3c4b9f30_wrap_pyop2_kernel_restrict      96 0.0 1.3816e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14eb3c4b9f30_wrap_pyop2_kernel_prolong      96 0.0 1.8551e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14ac985698a0_wrap_pyop2_kernel_restrict      96 0.0 1.4057e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14ac985698a0_wrap_pyop2_kernel_prolong      96 0.0 1.9026e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14cd17122020_wrap_pyop2_kernel_restrict      96 0.0 1.3916e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14cd17122020_wrap_pyop2_kernel_prolong      96 0.0 1.8655e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1537229eda20_wrap_pyop2_kernel_restrict      96 0.0 1.4021e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1537229eda20_wrap_pyop2_kernel_prolong      96 0.0 1.8757e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1511f2e71a80_wrap_pyop2_kernel_restrict      96 0.0 1.4102e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1511f2e71a80_wrap_pyop2_kernel_prolong      96 0.0 1.8823e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x146549689f00_wrap_pyop2_kernel_restrict      96 0.0 1.4277e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x146549689f00_wrap_pyop2_kernel_prolong      96 0.0 1.8645e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14eea5bd9e10_wrap_pyop2_kernel_restrict      96 0.0 1.3848e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14eea5bd9e10_wrap_pyop2_kernel_prolong      96 0.0 1.8508e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x153fb1f45690_wrap_pyop2_kernel_restrict      96 0.0 1.3816e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x153fb1f45690_wrap_pyop2_kernel_prolong      96 0.0 1.8499e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14f914581f90_wrap_pyop2_kernel_restrict      96 0.0 1.3915e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14f914581f90_wrap_pyop2_kernel_prolong      96 0.0 1.8580e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14e042229ff0_wrap_pyop2_kernel_restrict      96 0.0 1.3958e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14e042229ff0_wrap_pyop2_kernel_prolong      96 0.0 1.8624e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14a97094d330_wrap_pyop2_kernel_restrict      96 0.0 2.0973e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14a97094d330_wrap_pyop2_kernel_prolong      96 0.0 1.8577e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x145eeb536020_wrap_pyop2_kernel_restrict      96 0.0 2.2872e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x145eeb536020_wrap_pyop2_kernel_prolong      96 0.0 1.8712e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x150ad25716c0_wrap_pyop2_kernel_restrict      96 0.0 1.8618e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x150ad25716c0_wrap_pyop2_kernel_prolong      96 0.0 1.8453e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1547cbb5d8d0_wrap_pyop2_kernel_restrict      96 0.0 2.2976e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1547cbb5d8d0_wrap_pyop2_kernel_prolong      96 0.0 1.8853e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14aef2a9d5d0_wrap_pyop2_kernel_restrict      96 0.0 2.2308e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14aef2a9d5d0_wrap_pyop2_kernel_prolong      96 0.0 1.8714e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1540f77c5990_wrap_pyop2_kernel_restrict      96 0.0 2.2765e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1540f77c5990_wrap_pyop2_kernel_prolong      96 0.0 1.8710e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14905884da80_wrap_pyop2_kernel_restrict      96 0.0 2.1064e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14905884da80_wrap_pyop2_kernel_prolong      96 0.0 1.8571e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14b8c9f85c00_wrap_pyop2_kernel_restrict      96 0.0 2.1866e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14b8c9f85c00_wrap_pyop2_kernel_prolong      96 0.0 1.8631e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x153bb7439bd0_wrap_pyop2_kernel_restrict      96 0.0 2.2263e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x153bb7439bd0_wrap_pyop2_kernel_prolong      96 0.0 1.8460e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14dfc506d750_wrap_pyop2_kernel_restrict      96 0.0 1.9926e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14dfc506d750_wrap_pyop2_kernel_prolong      96 0.0 1.8426e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14b1177add80_wrap_pyop2_kernel_restrict      96 0.0 1.8377e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14b1177add80_wrap_pyop2_kernel_prolong      96 0.0 1.8356e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14982def9870_wrap_pyop2_kernel_restrict      96 0.0 2.0290e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14982def9870_wrap_pyop2_kernel_prolong      96 0.0 1.8567e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x147d863857b0_wrap_pyop2_kernel_restrict      96 0.0 2.1543e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x147d863857b0_wrap_pyop2_kernel_prolong      96 0.0 1.7857e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x151e6a73d690_wrap_pyop2_kernel_restrict      96 0.0 2.1935e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x151e6a73d690_wrap_pyop2_kernel_prolong      96 0.0 1.8038e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x15203e551960_wrap_pyop2_kernel_restrict      96 0.0 1.8487e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x15203e551960_wrap_pyop2_kernel_prolong      96 0.0 1.5253e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14da47b91840_wrap_pyop2_kernel_restrict      96 0.0 2.0698e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14da47b91840_wrap_pyop2_kernel_prolong      96 0.0 1.7897e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14cfe0931f00_wrap_pyop2_kernel_restrict      96 0.0 1.9001e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14cfe0931f00_wrap_pyop2_kernel_prolong      96 0.0 1.6171e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14bb765716c0_wrap_pyop2_kernel_restrict      96 0.0 2.2073e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14bb765716c0_wrap_pyop2_kernel_prolong      96 0.0 1.8558e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1458ef1ba0e0_wrap_pyop2_kernel_restrict      96 0.0 2.0289e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1458ef1ba0e0_wrap_pyop2_kernel_prolong      96 0.0 1.6746e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x148c04121630_wrap_pyop2_kernel_restrict      96 0.0 2.0842e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x148c04121630_wrap_pyop2_kernel_prolong      96 0.0 1.8013e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14bf28ed20e0_wrap_pyop2_kernel_restrict      96 0.0 1.7554e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14bf28ed20e0_wrap_pyop2_kernel_prolong      96 0.0 1.4285e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x15125e55d780_wrap_pyop2_kernel_restrict      96 0.0 1.9404e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x15125e55d780_wrap_pyop2_kernel_prolong      96 0.0 1.4885e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x149d31ad9780_wrap_pyop2_kernel_restrict      96 0.0 2.0063e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x149d31ad9780_wrap_pyop2_kernel_prolong      96 0.0 1.6341e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1496b3a19e70_wrap_pyop2_kernel_restrict      96 0.0 1.9149e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1496b3a19e70_wrap_pyop2_kernel_prolong      96 0.0 1.5544e-03 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14f355aee0e0_wrap_pyop2_kernel_restrict      96 0.0 3.0169e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14f355aee0e0_wrap_pyop2_kernel_prolong      96 0.0 1.8661e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14da22fdd810_wrap_pyop2_kernel_restrict      96 0.0 3.0330e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14da22fdd810_wrap_pyop2_kernel_prolong      96 0.0 1.8830e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14981f4595d0_wrap_pyop2_kernel_restrict      96 0.0 3.0256e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14981f4595d0_wrap_pyop2_kernel_prolong      96 0.0 1.8913e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14abe2ba9de0_wrap_pyop2_kernel_restrict      96 0.0 3.0166e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x14abe2ba9de0_wrap_pyop2_kernel_prolong      96 0.0 1.8860e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x15336b4cd5d0_wrap_pyop2_kernel_restrict      96 0.0 3.0332e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x15336b4cd5d0_wrap_pyop2_kernel_prolong      96 0.0 1.8923e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x150edd3454b0_wrap_pyop2_kernel_restrict      96 0.0 3.0311e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x150edd3454b0_wrap_pyop2_kernel_prolong      96 0.0 1.8994e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x149c00ab9b40_wrap_pyop2_kernel_restrict      96 0.0 3.0142e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x149c00ab9b40_wrap_pyop2_kernel_prolong      96 0.0 1.8978e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x154aeec49f60_wrap_pyop2_kernel_restrict      96 0.0 3.0520e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x154aeec49f60_wrap_pyop2_kernel_prolong      96 0.0 1.9096e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x154ebd15e020_wrap_pyop2_kernel_restrict      96 0.0 3.0288e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x154ebd15e020_wrap_pyop2_kernel_prolong      96 0.0 1.8830e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1520419e5ed0_wrap_pyop2_kernel_restrict      96 0.0 3.0043e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x1520419e5ed0_wrap_pyop2_kernel_prolong      96 0.0 1.8880e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x152cfde851b0_wrap_pyop2_kernel_restrict      96 0.0 3.0072e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x152cfde851b0_wrap_pyop2_kernel_prolong      96 0.0 1.8666e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x15355c2a16f0_wrap_pyop2_kernel_restrict      96 0.0 3.0334e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+Parloop_set_#x15355c2a16f0_wrap_pyop2_kernel_prolong      96 0.0 1.8793e-02 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+------------------------------------------------------------------------------------------------------------------------
+
+Object Type          Creations   Destructions. Reports information only for process 0.
+
+--- Event Stage 0: Main Stage
+
+           Container     8              4
+              Viewer     3              0
+           Index Set  1743           1671
+   IS L to G Mapping    14              9
+             Section   177            145
+   Star Forest Graph   119             91
+              Vector    34              6
+              Matrix    23              6
+   Matrix Null Space     2              0
+      Preconditioner     1              0
+       Krylov Solver     1              0
+                SNES     1              0
+              DMSNES     1              0
+    GraphPartitioner     7              3
+    Distributed Mesh    20              6
+            DM Label    99             56
+      Mesh Transform     1              0
+     Discrete System    32             18
+           Weak Form    32             18
+
+--- Event Stage 1: Warm-up Solve: k=10 nref=1
+
+           Container     4              4
+              Viewer     2              2
+           Index Set   152             82
+   IS L to G Mapping    14              0
+             Section    20             12
+   Star Forest Graph    33             15
+              Vector   260            118
+              Matrix  1357             29
+      Preconditioner  1306              3
+       Krylov Solver  1302              1
+     DMKSP interface     4              1
+    GraphPartitioner     0              2
+    Distributed Mesh     9              3
+            DM Label     0             13
+      Mesh Transform     0              1
+     Discrete System     9              3
+           Weak Form     9              3
+
+--- Event Stage 2: Warm Solve: k=10 nref=1
+
+           Container     2              2
+              Viewer     2              2
+              Vector    96             96
+========================================================================================================================
+Average time to get PetscTime(): 3.4e-08
+Average time for MPI_Barrier(): 2.12298e-05
+Average time for zero size MPI_Send(): 0.000117546
+#PETSc Option Table entries:
+-firedrake_0_fieldsplit_0_pmg_mg_coarse_pc_mg_levels 2 # (source: code)
+#End of PETSc Option Table entries
+Compiled without FORTRAN kernels
+Compiled with full precision matrices (default)
+sizeof(short) 2 sizeof(int) 4 sizeof(long) 8 sizeof(void*) 8 sizeof(PetscScalar) 8 sizeof(PetscInt) 4
+Configure options: PETSC_DIR=/u/avoronin1/firedrake_metis/firedrake/src/petsc PETSC_ARCH=default --with-fc=mpif90 --with-cc=mpicc --download-superlu_dist --download-chaco --with-mpiexec=mpiexec --download-openblas --download-pastix --download-bison --download-metis --download-hwloc --download-mumps --with-fortran-bindings=0 --with-shared-libraries=1 --download-cmake --with-cxx=mpicxx --download-openblas-make-options="'USE_THREAD=0 USE_LOCKING=1 USE_OPENMP=0'" --download-netcdf --with-zlib --with-c2html=0 --download-hdf5 --download-pnetcdf --download-ptscotch --download-suitesparse --download-scalapack --download-parmetis --download-hypre --with-debugging=0
+-----------------------------------------
+Libraries compiled on 2024-02-15 18:43:41 on cn053.delta.ncsa.illinois.edu 
+Machine characteristics: Linux-4.18.0-477.27.1.el8_8.x86_64-x86_64-with-glibc2.28
+Using PETSc directory: /u/avoronin1/firedrake_metis/firedrake/src/petsc
+Using PETSc arch: default
+-----------------------------------------
+
+Using C compiler: mpicc  -fPIC -Wall -Wwrite-strings -Wno-unknown-pragmas -Wno-lto-type-mismatch -Wno-stringop-overflow -fstack-protector -fvisibility=hidden -g -O  
+Using Fortran compiler: mpif90  -fPIC -Wall -ffree-line-length-none -ffree-line-length-0 -Wno-lto-type-mismatch -Wno-unused-dummy-argument -g -O    
+-----------------------------------------
+
+Using include paths: -I/u/avoronin1/firedrake_metis/firedrake/src/petsc/include -I/u/avoronin1/firedrake_metis/firedrake/src/petsc/default/include -I/u/avoronin1/firedrake_metis/firedrake/src/petsc/default/include/suitesparse
+-----------------------------------------
+
+Using C linker: mpicc
+Using Fortran linker: mpif90
+Using libraries: -Wl,-rpath,/u/avoronin1/firedrake_metis/firedrake/src/petsc/default/lib -L/u/avoronin1/firedrake_metis/firedrake/src/petsc/default/lib -lpetsc -Wl,-rpath,/u/avoronin1/firedrake_metis/firedrake/src/petsc/default/lib -L/u/avoronin1/firedrake_metis/firedrake/src/petsc/default/lib -Wl,-rpath,/sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/openmpi-4.1.6-lranp74/lib -L/sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/openmpi-4.1.6-lranp74/lib -Wl,-rpath,/opt/cray/libfabric/1.15.2.0/lib -L/opt/cray/libfabric/1.15.2.0/lib -Wl,-rpath,/sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/libevent-2.1.12-dhfcc5z/lib -L/sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/libevent-2.1.12-dhfcc5z/lib -Wl,-rpath,/sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/pmix-5.0.1-kawfcsj/lib -L/sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/pmix-5.0.1-kawfcsj/lib -Wl,-rpath,/sw/spack/deltas11-2023-03/apps/linux-rhel8-x86_64/gcc-8.5.0/gcc-11.4.0-yycklku/lib64 -L/sw/spack/deltas11-2023-03/apps/linux-rhel8-x86_64/gcc-8.5.0/gcc-11.4.0-yycklku/lib64 -Wl,-rpath,/sw/spack/deltas11-2023-03/apps/linux-rhel8-x86_64/gcc-8.5.0/gcc-11.4.0-yycklku/lib/gcc/x86_64-pc-linux-gnu/11.4.0 -L/sw/spack/deltas11-2023-03/apps/linux-rhel8-x86_64/gcc-8.5.0/gcc-11.4.0-yycklku/lib/gcc/x86_64-pc-linux-gnu/11.4.0 -Wl,-rpath,/sw/spack/deltas11-2023-03/apps/linux-rhel8-x86_64/gcc-8.5.0/gcc-11.4.0-yycklku/lib -L/sw/spack/deltas11-2023-03/apps/linux-rhel8-x86_64/gcc-8.5.0/gcc-11.4.0-yycklku/lib -lHYPRE -lspqr -lumfpack -lklu -lcholmod -lamd -ldmumps -lmumps_common -lpord -lpthread -lscalapack -lpastix -lsuperlu_dist -lopenblas -lptesmumps -lptscotchparmetisv3 -lptscotch -lptscotcherr -lesmumps -lscotch -lscotcherr -lparmetis -lmetis -lnetcdf -lpnetcdf -lhdf5_hl -lhdf5 -lchaco -lm -lz -lhwloc -lX11 -ldl -lmpi_usempif08 -lmpi_usempi_ignore_tkr -lmpi_mpifh -lmpi -lgfortran -lm -lgfortran -lm -lgcc_s -lquadmath -lpthread -lstdc++ -lrt -lm -lrt -lquadmath -ldl
+-----------------------------------------
+

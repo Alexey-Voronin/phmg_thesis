@@ -1,0 +1,48 @@
+r1_k03_V1_p3_h1.slurm --> 3197881
+Memory Utilized: 65.18 GB (estimated maximum)
+Memory Efficiency: 8.83% of 738.00 GB (246.00 GB/node)
+r1_k04_V1_p3_h1.slurm --> 3197882
+Memory Utilized: 94.38 GB (estimated maximum)
+Memory Efficiency: 12.79% of 738.00 GB (246.00 GB/node)
+r1_k05_V1_p3_h1.slurm --> 3197883
+Memory Utilized: 117.29 GB (estimated maximum)
+Memory Efficiency: 15.89% of 738.00 GB (246.00 GB/node)
+r1_k06_V1_p3_h1.slurm --> 3197884
+Memory Utilized: 123.01 GB (estimated maximum)
+Memory Efficiency: 16.67% of 738.00 GB (246.00 GB/node)
+r1_k07_V1_p3_h1.slurm --> 3197885
+Memory Utilized: 216.63 GB (estimated maximum)
+Memory Efficiency: 29.35% of 738.00 GB (246.00 GB/node)
+r1_k08_V1_p3_h1.slurm --> 3197886
+Memory Utilized: 225.28 GB (estimated maximum)
+Memory Efficiency: 30.53% of 738.00 GB (246.00 GB/node)
+r1_k09_V1_p3_h1.slurm --> 3197887
+Memory Utilized: 192.86 GB (estimated maximum)
+Memory Efficiency: 26.13% of 738.00 GB (246.00 GB/node)
+r1_k10_V1_p3_h1.slurm --> 3197888
+Memory Utilized: 327.78 GB (estimated maximum)
+Memory Efficiency: 44.41% of 738.00 GB (246.00 GB/node)
+r2_k03_V1_p3_h1.slurm --> 3197889
+Memory Utilized: 163.29 GB (estimated maximum)
+Memory Efficiency: 4.15% of 3.84 TB (246.00 GB/node)
+r2_k04_V1_p3_h1.slurm --> 3197890
+Memory Utilized: 216.31 GB (estimated maximum)
+Memory Efficiency: 5.50% of 3.84 TB (246.00 GB/node)
+r2_k05_V1_p3_h1.slurm --> 3197891
+Memory Utilized: 303.82 GB (estimated maximum)
+Memory Efficiency: 7.72% of 3.84 TB (246.00 GB/node)
+r2_k06_V1_p3_h1.slurm --> 3197892
+Memory Utilized: 594.28 GB (estimated maximum)
+Memory Efficiency: 15.10% of 3.84 TB (246.00 GB/node)
+r2_k07_V1_p3_h1.slurm --> 3197893
+Memory Utilized: 563.32 GB (estimated maximum)
+Memory Efficiency: 14.31% of 3.84 TB (246.00 GB/node)
+r2_k08_V1_p3_h1.slurm --> 3197894
+Memory Utilized: 714.98 GB (estimated maximum)
+Memory Efficiency: 18.17% of 3.84 TB (246.00 GB/node)
+r2_k09_V1_p3_h1.slurm --> 3197895
+Memory Utilized: 567.38 GB (estimated maximum)
+Memory Efficiency: 14.42% of 3.84 TB (246.00 GB/node)
+r2_k10_V1_p3_h1.slurm --> 3197896
+Memory Utilized: 960.25 GB (estimated maximum)
+Memory Efficiency: 24.40% of 3.84 TB (246.00 GB/node)

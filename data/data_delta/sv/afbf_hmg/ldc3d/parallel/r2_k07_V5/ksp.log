@@ -1,0 +1,650 @@
+KSP Object: (firedrake_0_) 192 MPI processes
+  type: fgmres
+    restart=30, using Classical (unmodified) Gram-Schmidt Orthogonalization with no iterative refinement
+    happy breakdown tolerance 1e-30
+  maximum iterations=80, initial guess is zero
+  tolerances:  relative=1e-11, absolute=1e-15, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (firedrake_0_) 192 MPI processes
+  type: fieldsplit
+    FieldSplit with Schur preconditioner, factorization FULL
+    Preconditioner for the Schur complement formed from A11
+    Split info:
+    Split number 0 Defined by IS
+    Split number 1 Defined by IS
+    KSP solver for A00 block
+      KSP Object: (firedrake_0_fieldsplit_0_) 192 MPI processes
+        type: preonly
+        maximum iterations=10000, initial guess is zero
+        tolerances:  relative=1e-05, absolute=1e-50, divergence=10000.
+        left preconditioning
+        using NONE norm type for convergence test
+      PC Object: (firedrake_0_fieldsplit_0_) 192 MPI processes
+        type: mg
+          type is MULTIPLICATIVE, levels=3 cycles=v
+            Cycles per PCApply=1
+            Not using Galerkin computed coarse grid matrices
+        Coarse grid solver -- level 0 -------------------------------
+          KSP Object: (firedrake_0_fieldsplit_0_mg_coarse_) 192 MPI processes
+            type: preonly
+            maximum iterations=10000, initial guess is zero
+            tolerances:  relative=1e-05, absolute=1e-50, divergence=10000.
+            left preconditioning
+            using NONE norm type for convergence test
+          PC Object: (firedrake_0_fieldsplit_0_mg_coarse_) 192 MPI processes
+            type: python
+              Python: firedrake.AssembledPC
+            Firedrake custom preconditioner AssembledPC
+            PC to apply inverse
+            PC Object: (firedrake_0_fieldsplit_0_mg_coarse_assembled_) 192 MPI processes
+              type: lu
+                out-of-place factorization
+                tolerance for zero pivot 2.22045e-14
+                matrix ordering: external
+                factor fill ratio given 0., needed 0.
+                  Factored matrix follows:
+                    Mat Object: (firedrake_0_fieldsplit_0_mg_coarse_assembled_) 192 MPI processes
+                      type: mumps
+                      rows=238521, cols=238521
+                      package used to perform factorization: mumps
+                      total: nonzeros=673055307, allocated nonzeros=673055307
+                        MUMPS run parameters:
+                          Use -firedrake_0_fieldsplit_0_mg_coarse_assembled_ksp_view ::ascii_info_detail to display information for all processes
+                          RINFOG(1) (global estimated flops for the elimination after analysis): 2.35526e+12
+                          RINFOG(2) (global estimated flops for the assembly after factorization): 4.41043e+09
+                          RINFOG(3) (global estimated flops for the elimination after factorization): 2.35526e+12
+                          (RINFOG(12) RINFOG(13))*2^INFOG(34) (determinant): (0.,0.)*(2^0)
+                          INFOG(3) (estimated real workspace for factors on all processors after analysis): 731134905
+                          INFOG(4) (estimated integer workspace for factors on all processors after analysis): 6916646
+                          INFOG(5) (estimated maximum front size in the complete tree): 8109
+                          INFOG(6) (number of nodes in the complete tree): 2121
+                          INFOG(7) (ordering option effectively used after analysis): 5
+                          INFOG(8) (structural symmetry in percent of the permuted matrix after analysis): -1
+                          INFOG(9) (total real/complex workspace to store the matrix factors after factorization): 673055307
+                          INFOG(10) (total integer space store the matrix factors after factorization): 6128871
+                          INFOG(11) (order of largest frontal matrix after factorization): 8109
+                          INFOG(12) (number of off-diagonal pivots): 0
+                          INFOG(13) (number of delayed pivots after factorization): 0
+                          INFOG(14) (number of memory compress after factorization): 515
+                          INFOG(15) (number of steps of iterative refinement after solution): 0
+                          INFOG(16) (estimated size (in MB) of all MUMPS internal data for factorization after analysis: value on the most memory consuming processor): 262
+                          INFOG(17) (estimated size of all MUMPS internal data for factorization after analysis: sum over all processors): 43894
+                          INFOG(18) (size of all MUMPS internal data allocated during factorization: value on the most memory consuming processor): 262
+                          INFOG(19) (size of all MUMPS internal data allocated during factorization: sum over all processors): 43894
+                          INFOG(20) (estimated number of entries in the factors): 673055307
+                          INFOG(21) (size in MB of memory effectively used during factorization - value on the most memory consuming processor): 232
+                          INFOG(22) (size in MB of memory effectively used during factorization - sum over all processors): 38127
+                          INFOG(23) (after analysis: value of ICNTL(6) effectively used): 0
+                          INFOG(24) (after analysis: value of ICNTL(12) effectively used): 1
+                          INFOG(25) (after factorization: number of pivots modified by static pivoting): 0
+                          INFOG(28) (after factorization: number of null pivots encountered): 0
+                          INFOG(29) (after factorization: effective number of entries in the factors (sum over all processors)): 673055307
+                          INFOG(30, 31) (after solution: size in Mbytes of memory used during solution phase): 121, 19402
+                          INFOG(32) (after analysis: type of analysis done): 1
+                          INFOG(33) (value used for ICNTL(8)): 7
+                          INFOG(34) (exponent of the determinant if determinant is requested): 0
+                          INFOG(35) (after factorization: number of entries taking into account BLR factor compression - sum over all processors): 673055307
+                          INFOG(36) (after analysis: estimated size of all MUMPS internal data for running BLR in-core - value on the most memory consuming processor): 0
+                          INFOG(37) (after analysis: estimated size of all MUMPS internal data for running BLR in-core - sum over all processors): 0
+                          INFOG(38) (after analysis: estimated size of all MUMPS internal data for running BLR out-of-core - value on the most memory consuming processor): 0
+                          INFOG(39) (after analysis: estimated size of all MUMPS internal data for running BLR out-of-core - sum over all processors): 0
+              linear system matrix followed by preconditioner matrix:
+              Mat Object: 192 MPI processes
+                type: mpiaij
+                rows=238521, cols=238521, bs=3
+                total: nonzeros=140941467, allocated nonzeros=140941467
+                total number of mallocs used during MatSetValues calls=0
+                  using I-node (on process 0) routines: found 152 nodes, limit used is 5
+              Mat Object: (firedrake_0_fieldsplit_0_mg_coarse_assembled_) 192 MPI processes
+                type: mpiaij
+                rows=238521, cols=238521, bs=3
+                total: nonzeros=140941467, allocated nonzeros=140941467
+                total number of mallocs used during MatSetValues calls=0
+                  using I-node (on process 0) routines: found 152 nodes, limit used is 5
+            linear system matrix = precond matrix:
+            Mat Object: 192 MPI processes
+              type: mpiaij
+              rows=238521, cols=238521, bs=3
+              total: nonzeros=140941467, allocated nonzeros=140941467
+              total number of mallocs used during MatSetValues calls=0
+                using I-node (on process 0) routines: found 152 nodes, limit used is 5
+        Down solver (pre-smoother) on level 1 -------------------------------
+          KSP Object: (firedrake_0_fieldsplit_0_mg_levels_1_) 192 MPI processes
+            type: chebyshev
+              Chebyshev polynomial of first kind
+              eigenvalue targets used: min 0.999911, max 4.39961
+              eigenvalues estimated via gmres: min 0.117786, max 3.99964
+              eigenvalues estimated using gmres with transform: [0. 0.25; 0. 1.1]
+              KSP Object: (firedrake_0_fieldsplit_0_mg_levels_1_esteig_) 192 MPI processes
+                type: gmres
+                  restart=30, using Classical (unmodified) Gram-Schmidt Orthogonalization with no iterative refinement
+                  happy breakdown tolerance 1e-30
+                maximum iterations=10, initial guess is zero
+                tolerances:  relative=1e-12, absolute=1e-50, divergence=10000.
+                left preconditioning
+                using PRECONDITIONED norm type for convergence test
+              estimating eigenvalues using noisy right hand side
+            maximum iterations=5, nonzero initial guess
+            tolerances:  relative=1e-05, absolute=1e-50, divergence=10000.
+            left preconditioning
+            using UNPRECONDITIONED norm type for convergence test
+          PC Object: (firedrake_0_fieldsplit_0_mg_levels_1_) 192 MPI processes
+            type: python
+              Python: firedrake.PatchPC
+            PC Object: (firedrake_0_fieldsplit_0_mg_levels_1_patch_) 192 MPI processes
+              type: patch
+                Subspace Correction preconditioner with 364 patches
+                Schwarz type: additive
+                Not weighting by partition of unity
+                Not symmetrising sweep
+                Precomputing element tensors (each cell assembled only once)
+                Saving patch operators (rebuilt every PCSetUp)
+                Patch construction operator: star
+                KSP on patches (all same):
+                  KSP Object: (firedrake_0_fieldsplit_0_mg_levels_1_patch_sub_) 1 MPI process
+                    type: preonly
+                    maximum iterations=10000, initial guess is zero
+                    tolerances:  relative=1e-05, absolute=1e-50, divergence=10000.
+                    left preconditioning
+                    using NONE norm type for convergence test
+                  PC Object: (firedrake_0_fieldsplit_0_mg_levels_1_patch_sub_) 1 MPI process
+                    type: lu
+                      out-of-place factorization
+                      tolerance for zero pivot 2.22045e-14
+                      matrix ordering: nd
+                      factor fill ratio given 5., needed 1.2825
+                        Factored matrix follows:
+                          Mat Object: (firedrake_0_fieldsplit_0_mg_levels_1_patch_sub_) 1 MPI process
+                            type: seqaij
+                            rows=2013, cols=2013
+                            package used to perform factorization: petsc
+                            total: nonzeros=819297, allocated nonzeros=819297
+                              using I-node routines: found 405 nodes, limit used is 5
+                    linear system matrix = precond matrix:
+                    Mat Object: (firedrake_0_fieldsplit_0_mg_levels_1_patch_pc_patch_sub_) 1 MPI process
+                      type: seqaij
+                      rows=2013, cols=2013
+                      total: nonzeros=638829, allocated nonzeros=638829
+                      total number of mallocs used during MatSetValues calls=0
+                        using I-node routines: found 405 nodes, limit used is 5
+              linear system matrix = precond matrix:
+              Mat Object: 192 MPI processes
+                type: mpiaij
+                rows=1842375, cols=1842375, bs=3
+                total: nonzeros=1118135349, allocated nonzeros=1118135349
+                total number of mallocs used during MatSetValues calls=0
+                  using I-node (on process 0) routines: found 1434 nodes, limit used is 5
+            linear system matrix = precond matrix:
+            Mat Object: 192 MPI processes
+              type: mpiaij
+              rows=1842375, cols=1842375, bs=3
+              total: nonzeros=1118135349, allocated nonzeros=1118135349
+              total number of mallocs used during MatSetValues calls=0
+                using I-node (on process 0) routines: found 1434 nodes, limit used is 5
+        Up solver (post-smoother) same as down solver (pre-smoother)
+        Down solver (pre-smoother) on level 2 -------------------------------
+          KSP Object: (firedrake_0_fieldsplit_0_mg_levels_2_) 192 MPI processes
+            type: chebyshev
+              Chebyshev polynomial of first kind
+              eigenvalue targets used: min 0.999926, max 4.39968
+              eigenvalues estimated via gmres: min 0.10315, max 3.9997
+              eigenvalues estimated using gmres with transform: [0. 0.25; 0. 1.1]
+              KSP Object: (firedrake_0_fieldsplit_0_mg_levels_2_esteig_) 192 MPI processes
+                type: gmres
+                  restart=30, using Classical (unmodified) Gram-Schmidt Orthogonalization with no iterative refinement
+                  happy breakdown tolerance 1e-30
+                maximum iterations=10, initial guess is zero
+                tolerances:  relative=1e-12, absolute=1e-50, divergence=10000.
+                left preconditioning
+                using PRECONDITIONED norm type for convergence test
+              estimating eigenvalues using noisy right hand side
+            maximum iterations=5, nonzero initial guess
+            tolerances:  relative=1e-05, absolute=1e-50, divergence=10000.
+            left preconditioning
+            using UNPRECONDITIONED norm type for convergence test
+          PC Object: (firedrake_0_fieldsplit_0_mg_levels_2_) 192 MPI processes
+            type: python
+              Python: firedrake.PatchPC
+            PC Object: (firedrake_0_fieldsplit_0_mg_levels_2_patch_) 192 MPI processes
+              type: patch
+                Subspace Correction preconditioner with 1788 patches
+                Schwarz type: additive
+                Not weighting by partition of unity
+                Not symmetrising sweep
+                Precomputing element tensors (each cell assembled only once)
+                Saving patch operators (rebuilt every PCSetUp)
+                Patch construction operator: star
+                KSP on patches (all same):
+                  KSP Object: (firedrake_0_fieldsplit_0_mg_levels_2_patch_sub_) 1 MPI process
+                    type: preonly
+                    maximum iterations=10000, initial guess is zero
+                    tolerances:  relative=1e-05, absolute=1e-50, divergence=10000.
+                    left preconditioning
+                    using NONE norm type for convergence test
+                  PC Object: (firedrake_0_fieldsplit_0_mg_levels_2_patch_sub_) 1 MPI process
+                    type: lu
+                      out-of-place factorization
+                      tolerance for zero pivot 2.22045e-14
+                      matrix ordering: nd
+                      factor fill ratio given 5., needed 1.03795
+                        Factored matrix follows:
+                          Mat Object: (firedrake_0_fieldsplit_0_mg_levels_2_patch_sub_) 1 MPI process
+                            type: seqaij
+                            rows=585, cols=585
+                            package used to perform factorization: petsc
+                            total: nonzeros=221535, allocated nonzeros=221535
+                              using I-node routines: found 119 nodes, limit used is 5
+                    linear system matrix = precond matrix:
+                    Mat Object: (firedrake_0_fieldsplit_0_mg_levels_2_patch_pc_patch_sub_) 1 MPI process
+                      type: seqaij
+                      rows=585, cols=585
+                      total: nonzeros=213435, allocated nonzeros=213435
+                      total number of mallocs used during MatSetValues calls=0
+                        using I-node routines: found 119 nodes, limit used is 5
+              linear system matrix = precond matrix:
+              Mat Object: (firedrake_0_fieldsplit_0_) 192 MPI processes
+                type: mpiaij
+                rows=7285575, cols=7285575, bs=3
+                total: nonzeros=4447414197, allocated nonzeros=4447414197
+                total number of mallocs used during MatSetValues calls=0
+                  using I-node (on process 0) routines: found 6570 nodes, limit used is 5
+            linear system matrix = precond matrix:
+            Mat Object: (firedrake_0_fieldsplit_0_) 192 MPI processes
+              type: mpiaij
+              rows=7285575, cols=7285575, bs=3
+              total: nonzeros=4447414197, allocated nonzeros=4447414197
+              total number of mallocs used during MatSetValues calls=0
+                using I-node (on process 0) routines: found 6570 nodes, limit used is 5
+        Up solver (post-smoother) same as down solver (pre-smoother)
+        linear system matrix = precond matrix:
+        Mat Object: (firedrake_0_fieldsplit_0_) 192 MPI processes
+          type: mpiaij
+          rows=7285575, cols=7285575, bs=3
+          total: nonzeros=4447414197, allocated nonzeros=4447414197
+          total number of mallocs used during MatSetValues calls=0
+            using I-node (on process 0) routines: found 6570 nodes, limit used is 5
+    KSP solver for S = A11 - A10 inv(A00) A01
+      KSP Object: (firedrake_0_fieldsplit_1_) 192 MPI processes
+        type: preonly
+        maximum iterations=10000, initial guess is zero
+        tolerances:  relative=1e-05, absolute=1e-50, divergence=10000.
+        left preconditioning
+        using NONE norm type for convergence test
+      PC Object: (firedrake_0_fieldsplit_1_) 192 MPI processes
+        type: python
+          Python: alfi.solver.DGMassInv
+        Firedrake custom preconditioner DGMassInv
+        linear system matrix followed by preconditioner matrix:
+        Mat Object: (firedrake_0_fieldsplit_1_) 192 MPI processes
+          type: schurcomplement
+          rows=3483648, cols=3483648
+            has attached null space
+            Schur complement A11 - A10 inv(A00) A01
+            A11
+              Mat Object: (firedrake_0_fieldsplit_1_) 192 MPI processes
+                type: mpiaij
+                rows=3483648, cols=3483648
+                total: nonzeros=292626432, allocated nonzeros=292626432
+                total number of mallocs used during MatSetValues calls=0
+                  has attached null space
+                  using I-node (on process 0) routines: found 3264 nodes, limit used is 5
+            A10
+              Mat Object: 192 MPI processes
+                type: mpiaij
+                rows=3483648, cols=7285575, rbs=1, cbs=3
+                total: nonzeros=1254113280, allocated nonzeros=1254113280
+                total number of mallocs used during MatSetValues calls=0
+                  using I-node (on process 0) routines: found 3264 nodes, limit used is 5
+            KSP solver for A00 block viewable with the additional option -firedrake_0_fieldsplit_0_ksp_view
+            A01
+              Mat Object: 192 MPI processes
+                type: mpiaij
+                rows=7285575, cols=3483648, rbs=3, cbs=1
+                total: nonzeros=1254113280, allocated nonzeros=1254113280
+                total number of mallocs used during MatSetValues calls=0
+                  using I-node (on process 0) routines: found 6570 nodes, limit used is 5
+        Mat Object: (firedrake_0_fieldsplit_1_) 192 MPI processes
+          type: mpiaij
+          rows=3483648, cols=3483648
+          total: nonzeros=292626432, allocated nonzeros=292626432
+          total number of mallocs used during MatSetValues calls=0
+            has attached null space
+            using I-node (on process 0) routines: found 3264 nodes, limit used is 5
+  linear system matrix = precond matrix:
+  Mat Object: (firedrake_0_) 192 MPI processes
+    type: nest
+    rows=10769223, cols=10769223
+      has attached null space
+      Matrix object:
+        type=nest, rows=2, cols=2
+        MatNest structure:
+        (0,0) : prefix="firedrake_0_fieldsplit_0_", type=mpiaij, rows=7285575, cols=7285575
+        (0,1) : type=mpiaij, rows=7285575, cols=3483648
+        (1,0) : type=mpiaij, rows=3483648, cols=7285575
+        (1,1) : prefix="firedrake_0_fieldsplit_1_", type=mpiaij, rows=3483648, cols=3483648
+KSP Object: (firedrake_0_) 192 MPI processes
+  type: fgmres
+    restart=30, using Classical (unmodified) Gram-Schmidt Orthogonalization with no iterative refinement
+    happy breakdown tolerance 1e-30
+  maximum iterations=80, initial guess is zero
+  tolerances:  relative=1e-11, absolute=1e-15, divergence=10000.
+  right preconditioning
+  using UNPRECONDITIONED norm type for convergence test
+PC Object: (firedrake_0_) 192 MPI processes
+  type: fieldsplit
+    FieldSplit with Schur preconditioner, factorization FULL
+    Preconditioner for the Schur complement formed from A11
+    Split info:
+    Split number 0 Defined by IS
+    Split number 1 Defined by IS
+    KSP solver for A00 block
+      KSP Object: (firedrake_0_fieldsplit_0_) 192 MPI processes
+        type: preonly
+        maximum iterations=10000, initial guess is zero
+        tolerances:  relative=1e-05, absolute=1e-50, divergence=10000.
+        left preconditioning
+        using NONE norm type for convergence test
+      PC Object: (firedrake_0_fieldsplit_0_) 192 MPI processes
+        type: mg
+          type is MULTIPLICATIVE, levels=3 cycles=v
+            Cycles per PCApply=1
+            Not using Galerkin computed coarse grid matrices
+        Coarse grid solver -- level 0 -------------------------------
+          KSP Object: (firedrake_0_fieldsplit_0_mg_coarse_) 192 MPI processes
+            type: preonly
+            maximum iterations=10000, initial guess is zero
+            tolerances:  relative=1e-05, absolute=1e-50, divergence=10000.
+            left preconditioning
+            using NONE norm type for convergence test
+          PC Object: (firedrake_0_fieldsplit_0_mg_coarse_) 192 MPI processes
+            type: python
+              Python: firedrake.AssembledPC
+            Firedrake custom preconditioner AssembledPC
+            PC to apply inverse
+            PC Object: (firedrake_0_fieldsplit_0_mg_coarse_assembled_) 192 MPI processes
+              type: lu
+                out-of-place factorization
+                tolerance for zero pivot 2.22045e-14
+                matrix ordering: external
+                factor fill ratio given 0., needed 0.
+                  Factored matrix follows:
+                    Mat Object: (firedrake_0_fieldsplit_0_mg_coarse_assembled_) 192 MPI processes
+                      type: mumps
+                      rows=238521, cols=238521
+                      package used to perform factorization: mumps
+                      total: nonzeros=673055307, allocated nonzeros=673055307
+                        MUMPS run parameters:
+                          Use -firedrake_0_fieldsplit_0_mg_coarse_assembled_ksp_view ::ascii_info_detail to display information for all processes
+                          RINFOG(1) (global estimated flops for the elimination after analysis): 2.35526e+12
+                          RINFOG(2) (global estimated flops for the assembly after factorization): 4.41043e+09
+                          RINFOG(3) (global estimated flops for the elimination after factorization): 2.35526e+12
+                          (RINFOG(12) RINFOG(13))*2^INFOG(34) (determinant): (0.,0.)*(2^0)
+                          INFOG(3) (estimated real workspace for factors on all processors after analysis): 731134905
+                          INFOG(4) (estimated integer workspace for factors on all processors after analysis): 6916646
+                          INFOG(5) (estimated maximum front size in the complete tree): 8109
+                          INFOG(6) (number of nodes in the complete tree): 2121
+                          INFOG(7) (ordering option effectively used after analysis): 5
+                          INFOG(8) (structural symmetry in percent of the permuted matrix after analysis): -1
+                          INFOG(9) (total real/complex workspace to store the matrix factors after factorization): 673055307
+                          INFOG(10) (total integer space store the matrix factors after factorization): 6128871
+                          INFOG(11) (order of largest frontal matrix after factorization): 8109
+                          INFOG(12) (number of off-diagonal pivots): 0
+                          INFOG(13) (number of delayed pivots after factorization): 0
+                          INFOG(14) (number of memory compress after factorization): 515
+                          INFOG(15) (number of steps of iterative refinement after solution): 0
+                          INFOG(16) (estimated size (in MB) of all MUMPS internal data for factorization after analysis: value on the most memory consuming processor): 262
+                          INFOG(17) (estimated size of all MUMPS internal data for factorization after analysis: sum over all processors): 43894
+                          INFOG(18) (size of all MUMPS internal data allocated during factorization: value on the most memory consuming processor): 262
+                          INFOG(19) (size of all MUMPS internal data allocated during factorization: sum over all processors): 43894
+                          INFOG(20) (estimated number of entries in the factors): 673055307
+                          INFOG(21) (size in MB of memory effectively used during factorization - value on the most memory consuming processor): 232
+                          INFOG(22) (size in MB of memory effectively used during factorization - sum over all processors): 38127
+                          INFOG(23) (after analysis: value of ICNTL(6) effectively used): 0
+                          INFOG(24) (after analysis: value of ICNTL(12) effectively used): 1
+                          INFOG(25) (after factorization: number of pivots modified by static pivoting): 0
+                          INFOG(28) (after factorization: number of null pivots encountered): 0
+                          INFOG(29) (after factorization: effective number of entries in the factors (sum over all processors)): 673055307
+                          INFOG(30, 31) (after solution: size in Mbytes of memory used during solution phase): 121, 19402
+                          INFOG(32) (after analysis: type of analysis done): 1
+                          INFOG(33) (value used for ICNTL(8)): 7
+                          INFOG(34) (exponent of the determinant if determinant is requested): 0
+                          INFOG(35) (after factorization: number of entries taking into account BLR factor compression - sum over all processors): 673055307
+                          INFOG(36) (after analysis: estimated size of all MUMPS internal data for running BLR in-core - value on the most memory consuming processor): 0
+                          INFOG(37) (after analysis: estimated size of all MUMPS internal data for running BLR in-core - sum over all processors): 0
+                          INFOG(38) (after analysis: estimated size of all MUMPS internal data for running BLR out-of-core - value on the most memory consuming processor): 0
+                          INFOG(39) (after analysis: estimated size of all MUMPS internal data for running BLR out-of-core - sum over all processors): 0
+              linear system matrix followed by preconditioner matrix:
+              Mat Object: 192 MPI processes
+                type: mpiaij
+                rows=238521, cols=238521, bs=3
+                total: nonzeros=140941467, allocated nonzeros=140941467
+                total number of mallocs used during MatSetValues calls=0
+                  using I-node (on process 0) routines: found 152 nodes, limit used is 5
+              Mat Object: (firedrake_0_fieldsplit_0_mg_coarse_assembled_) 192 MPI processes
+                type: mpiaij
+                rows=238521, cols=238521, bs=3
+                total: nonzeros=140941467, allocated nonzeros=140941467
+                total number of mallocs used during MatSetValues calls=0
+                  using I-node (on process 0) routines: found 152 nodes, limit used is 5
+            linear system matrix = precond matrix:
+            Mat Object: 192 MPI processes
+              type: mpiaij
+              rows=238521, cols=238521, bs=3
+              total: nonzeros=140941467, allocated nonzeros=140941467
+              total number of mallocs used during MatSetValues calls=0
+                using I-node (on process 0) routines: found 152 nodes, limit used is 5
+        Down solver (pre-smoother) on level 1 -------------------------------
+          KSP Object: (firedrake_0_fieldsplit_0_mg_levels_1_) 192 MPI processes
+            type: chebyshev
+              Chebyshev polynomial of first kind
+              eigenvalue targets used: min 0.999911, max 4.39961
+              eigenvalues estimated via gmres: min 0.117786, max 3.99964
+              eigenvalues estimated using gmres with transform: [0. 0.25; 0. 1.1]
+              KSP Object: (firedrake_0_fieldsplit_0_mg_levels_1_esteig_) 192 MPI processes
+                type: gmres
+                  restart=30, using Classical (unmodified) Gram-Schmidt Orthogonalization with no iterative refinement
+                  happy breakdown tolerance 1e-30
+                maximum iterations=10, initial guess is zero
+                tolerances:  relative=1e-12, absolute=1e-50, divergence=10000.
+                left preconditioning
+                using PRECONDITIONED norm type for convergence test
+              estimating eigenvalues using noisy right hand side
+            maximum iterations=5, nonzero initial guess
+            tolerances:  relative=1e-05, absolute=1e-50, divergence=10000.
+            left preconditioning
+            using UNPRECONDITIONED norm type for convergence test
+          PC Object: (firedrake_0_fieldsplit_0_mg_levels_1_) 192 MPI processes
+            type: python
+              Python: firedrake.PatchPC
+            PC Object: (firedrake_0_fieldsplit_0_mg_levels_1_patch_) 192 MPI processes
+              type: patch
+                Subspace Correction preconditioner with 364 patches
+                Schwarz type: additive
+                Not weighting by partition of unity
+                Not symmetrising sweep
+                Precomputing element tensors (each cell assembled only once)
+                Saving patch operators (rebuilt every PCSetUp)
+                Patch construction operator: star
+                KSP on patches (all same):
+                  KSP Object: (firedrake_0_fieldsplit_0_mg_levels_1_patch_sub_) 1 MPI process
+                    type: preonly
+                    maximum iterations=10000, initial guess is zero
+                    tolerances:  relative=1e-05, absolute=1e-50, divergence=10000.
+                    left preconditioning
+                    using NONE norm type for convergence test
+                  PC Object: (firedrake_0_fieldsplit_0_mg_levels_1_patch_sub_) 1 MPI process
+                    type: lu
+                      out-of-place factorization
+                      tolerance for zero pivot 2.22045e-14
+                      matrix ordering: nd
+                      factor fill ratio given 5., needed 1.2825
+                        Factored matrix follows:
+                          Mat Object: (firedrake_0_fieldsplit_0_mg_levels_1_patch_sub_) 1 MPI process
+                            type: seqaij
+                            rows=2013, cols=2013
+                            package used to perform factorization: petsc
+                            total: nonzeros=819297, allocated nonzeros=819297
+                              using I-node routines: found 405 nodes, limit used is 5
+                    linear system matrix = precond matrix:
+                    Mat Object: (firedrake_0_fieldsplit_0_mg_levels_1_patch_pc_patch_sub_) 1 MPI process
+                      type: seqaij
+                      rows=2013, cols=2013
+                      total: nonzeros=638829, allocated nonzeros=638829
+                      total number of mallocs used during MatSetValues calls=0
+                        using I-node routines: found 405 nodes, limit used is 5
+              linear system matrix = precond matrix:
+              Mat Object: 192 MPI processes
+                type: mpiaij
+                rows=1842375, cols=1842375, bs=3
+                total: nonzeros=1118135349, allocated nonzeros=1118135349
+                total number of mallocs used during MatSetValues calls=0
+                  using I-node (on process 0) routines: found 1434 nodes, limit used is 5
+            linear system matrix = precond matrix:
+            Mat Object: 192 MPI processes
+              type: mpiaij
+              rows=1842375, cols=1842375, bs=3
+              total: nonzeros=1118135349, allocated nonzeros=1118135349
+              total number of mallocs used during MatSetValues calls=0
+                using I-node (on process 0) routines: found 1434 nodes, limit used is 5
+        Up solver (post-smoother) same as down solver (pre-smoother)
+        Down solver (pre-smoother) on level 2 -------------------------------
+          KSP Object: (firedrake_0_fieldsplit_0_mg_levels_2_) 192 MPI processes
+            type: chebyshev
+              Chebyshev polynomial of first kind
+              eigenvalue targets used: min 0.999926, max 4.39968
+              eigenvalues estimated via gmres: min 0.10315, max 3.9997
+              eigenvalues estimated using gmres with transform: [0. 0.25; 0. 1.1]
+              KSP Object: (firedrake_0_fieldsplit_0_mg_levels_2_esteig_) 192 MPI processes
+                type: gmres
+                  restart=30, using Classical (unmodified) Gram-Schmidt Orthogonalization with no iterative refinement
+                  happy breakdown tolerance 1e-30
+                maximum iterations=10, initial guess is zero
+                tolerances:  relative=1e-12, absolute=1e-50, divergence=10000.
+                left preconditioning
+                using PRECONDITIONED norm type for convergence test
+              estimating eigenvalues using noisy right hand side
+            maximum iterations=5, nonzero initial guess
+            tolerances:  relative=1e-05, absolute=1e-50, divergence=10000.
+            left preconditioning
+            using UNPRECONDITIONED norm type for convergence test
+          PC Object: (firedrake_0_fieldsplit_0_mg_levels_2_) 192 MPI processes
+            type: python
+              Python: firedrake.PatchPC
+            PC Object: (firedrake_0_fieldsplit_0_mg_levels_2_patch_) 192 MPI processes
+              type: patch
+                Subspace Correction preconditioner with 1788 patches
+                Schwarz type: additive
+                Not weighting by partition of unity
+                Not symmetrising sweep
+                Precomputing element tensors (each cell assembled only once)
+                Saving patch operators (rebuilt every PCSetUp)
+                Patch construction operator: star
+                KSP on patches (all same):
+                  KSP Object: (firedrake_0_fieldsplit_0_mg_levels_2_patch_sub_) 1 MPI process
+                    type: preonly
+                    maximum iterations=10000, initial guess is zero
+                    tolerances:  relative=1e-05, absolute=1e-50, divergence=10000.
+                    left preconditioning
+                    using NONE norm type for convergence test
+                  PC Object: (firedrake_0_fieldsplit_0_mg_levels_2_patch_sub_) 1 MPI process
+                    type: lu
+                      out-of-place factorization
+                      tolerance for zero pivot 2.22045e-14
+                      matrix ordering: nd
+                      factor fill ratio given 5., needed 1.03795
+                        Factored matrix follows:
+                          Mat Object: (firedrake_0_fieldsplit_0_mg_levels_2_patch_sub_) 1 MPI process
+                            type: seqaij
+                            rows=585, cols=585
+                            package used to perform factorization: petsc
+                            total: nonzeros=221535, allocated nonzeros=221535
+                              using I-node routines: found 119 nodes, limit used is 5
+                    linear system matrix = precond matrix:
+                    Mat Object: (firedrake_0_fieldsplit_0_mg_levels_2_patch_pc_patch_sub_) 1 MPI process
+                      type: seqaij
+                      rows=585, cols=585
+                      total: nonzeros=213435, allocated nonzeros=213435
+                      total number of mallocs used during MatSetValues calls=0
+                        using I-node routines: found 119 nodes, limit used is 5
+              linear system matrix = precond matrix:
+              Mat Object: (firedrake_0_fieldsplit_0_) 192 MPI processes
+                type: mpiaij
+                rows=7285575, cols=7285575, bs=3
+                total: nonzeros=4447414197, allocated nonzeros=4447414197
+                total number of mallocs used during MatSetValues calls=0
+                  using I-node (on process 0) routines: found 6570 nodes, limit used is 5
+            linear system matrix = precond matrix:
+            Mat Object: (firedrake_0_fieldsplit_0_) 192 MPI processes
+              type: mpiaij
+              rows=7285575, cols=7285575, bs=3
+              total: nonzeros=4447414197, allocated nonzeros=4447414197
+              total number of mallocs used during MatSetValues calls=0
+                using I-node (on process 0) routines: found 6570 nodes, limit used is 5
+        Up solver (post-smoother) same as down solver (pre-smoother)
+        linear system matrix = precond matrix:
+        Mat Object: (firedrake_0_fieldsplit_0_) 192 MPI processes
+          type: mpiaij
+          rows=7285575, cols=7285575, bs=3
+          total: nonzeros=4447414197, allocated nonzeros=4447414197
+          total number of mallocs used during MatSetValues calls=0
+            using I-node (on process 0) routines: found 6570 nodes, limit used is 5
+    KSP solver for S = A11 - A10 inv(A00) A01
+      KSP Object: (firedrake_0_fieldsplit_1_) 192 MPI processes
+        type: preonly
+        maximum iterations=10000, initial guess is zero
+        tolerances:  relative=1e-05, absolute=1e-50, divergence=10000.
+        left preconditioning
+        using NONE norm type for convergence test
+      PC Object: (firedrake_0_fieldsplit_1_) 192 MPI processes
+        type: python
+          Python: alfi.solver.DGMassInv
+        Firedrake custom preconditioner DGMassInv
+        linear system matrix followed by preconditioner matrix:
+        Mat Object: (firedrake_0_fieldsplit_1_) 192 MPI processes
+          type: schurcomplement
+          rows=3483648, cols=3483648
+            has attached null space
+            Schur complement A11 - A10 inv(A00) A01
+            A11
+              Mat Object: (firedrake_0_fieldsplit_1_) 192 MPI processes
+                type: mpiaij
+                rows=3483648, cols=3483648
+                total: nonzeros=292626432, allocated nonzeros=292626432
+                total number of mallocs used during MatSetValues calls=0
+                  has attached null space
+                  using I-node (on process 0) routines: found 3264 nodes, limit used is 5
+            A10
+              Mat Object: 192 MPI processes
+                type: mpiaij
+                rows=3483648, cols=7285575, rbs=1, cbs=3
+                total: nonzeros=1254113280, allocated nonzeros=1254113280
+                total number of mallocs used during MatSetValues calls=0
+                  using I-node (on process 0) routines: found 3264 nodes, limit used is 5
+            KSP solver for A00 block viewable with the additional option -firedrake_0_fieldsplit_0_ksp_view
+            A01
+              Mat Object: 192 MPI processes
+                type: mpiaij
+                rows=7285575, cols=3483648, rbs=3, cbs=1
+                total: nonzeros=1254113280, allocated nonzeros=1254113280
+                total number of mallocs used during MatSetValues calls=0
+                  using I-node (on process 0) routines: found 6570 nodes, limit used is 5
+        Mat Object: (firedrake_0_fieldsplit_1_) 192 MPI processes
+          type: mpiaij
+          rows=3483648, cols=3483648
+          total: nonzeros=292626432, allocated nonzeros=292626432
+          total number of mallocs used during MatSetValues calls=0
+            has attached null space
+            using I-node (on process 0) routines: found 3264 nodes, limit used is 5
+  linear system matrix = precond matrix:
+  Mat Object: (firedrake_0_) 192 MPI processes
+    type: nest
+    rows=10769223, cols=10769223
+      has attached null space
+      Matrix object:
+        type=nest, rows=2, cols=2
+        MatNest structure:
+        (0,0) : prefix="firedrake_0_fieldsplit_0_", type=mpiaij, rows=7285575, cols=7285575
+        (0,1) : type=mpiaij, rows=7285575, cols=3483648
+        (1,0) : type=mpiaij, rows=3483648, cols=7285575
+        (1,1) : prefix="firedrake_0_fieldsplit_1_", type=mpiaij, rows=3483648, cols=3483648

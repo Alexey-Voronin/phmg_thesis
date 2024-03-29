@@ -1,0 +1,25 @@
+order= 3 nref= 1 baseN(quad=False)=6 | ndofs=  171116 | rel_resid[27]=9.26e-12 | overall_time(s)=1.325e+01 warm_time(s)=4.757e+00
+order= 3 nref= 2 baseN(quad=False)=6 | ndofs=  683150 | rel_resid[27]=4.36e-12 | overall_time(s)=5.199e+01 warm_time(s)=2.294e+01
+order= 3 nref= 3 baseN(quad=False)=6 | ndofs= 2729978 | rel_resid[25]=9.28e-12 | overall_time(s)=2.002e+02 warm_time(s)=8.806e+01
+order= 4 nref= 1 baseN(quad=False)=6 | ndofs=  296338 | rel_resid[25]=7.46e-12 | overall_time(s)=1.780e+01 warm_time(s)=6.300e+00
+order= 4 nref= 2 baseN(quad=False)=6 | ndofs= 1183602 | rel_resid[24]=9.21e-12 | overall_time(s)=6.941e+01 warm_time(s)=2.936e+01
+order= 4 nref= 3 baseN(quad=False)=6 | ndofs= 4730914 | rel_resid[24]=4.40e-12 | overall_time(s)=2.813e+02 warm_time(s)=1.206e+02
+order= 5 nref= 1 baseN(quad=False)=5 | ndofs=  244642 | rel_resid[25]=6.04e-12 | overall_time(s)=1.707e+01 warm_time(s)=5.068e+00
+order= 5 nref= 2 baseN(quad=False)=5 | ndofs=  976962 | rel_resid[24]=7.66e-12 | overall_time(s)=5.808e+01 warm_time(s)=2.379e+01
+order= 5 nref= 3 baseN(quad=False)=5 | ndofs= 3904642 | rel_resid[23]=9.70e-12 | overall_time(s)=2.164e+02 warm_time(s)=9.269e+01
+order= 6 nref= 1 baseN(quad=False)=4 | ndofs=  190850 | rel_resid[25]=5.97e-12 | overall_time(s)=1.751e+01 warm_time(s)=4.324e+00
+order= 6 nref= 2 baseN(quad=False)=4 | ndofs=  762002 | rel_resid[24]=6.91e-12 | overall_time(s)=5.340e+01 warm_time(s)=2.027e+01
+order= 6 nref= 3 baseN(quad=False)=4 | ndofs= 3045218 | rel_resid[23]=8.34e-12 | overall_time(s)=2.370e+02 warm_time(s)=7.837e+01
+order= 7 nref= 1 baseN(quad=False)=4 | ndofs=  257686 | rel_resid[24]=7.90e-12 | overall_time(s)=2.833e+01 warm_time(s)=6.687e+00
+order= 7 nref= 2 baseN(quad=False)=4 | ndofs= 1029114 | rel_resid[24]=4.37e-12 | overall_time(s)=8.449e+01 warm_time(s)=3.181e+01
+order= 7 nref= 3 baseN(quad=False)=4 | ndofs= 4113202 | rel_resid[23]=5.72e-12 | overall_time(s)=3.513e+02 warm_time(s)=1.228e+02
+order= 8 nref= 1 baseN(quad=False)=4 | ndofs=  334530 | rel_resid[24]=4.98e-12 | overall_time(s)=4.436e+01 warm_time(s)=1.041e+01
+order= 8 nref= 2 baseN(quad=False)=4 | ndofs= 1336258 | rel_resid[23]=7.78e-12 | overall_time(s)=1.308e+02 warm_time(s)=4.848e+01
+order= 8 nref= 3 baseN(quad=False)=4 | ndofs= 5341314 | rel_resid[22]=8.74e-12 | overall_time(s)=5.569e+02 warm_time(s)=1.914e+02
+order= 9 nref= 1 baseN(quad=False)=3 | ndofs=  215462 | rel_resid[24]=5.06e-12 | overall_time(s)=5.196e+01 warm_time(s)=8.423e+00
+order= 9 nref= 2 baseN(quad=False)=3 | ndofs=  860330 | rel_resid[23]=7.66e-12 | overall_time(s)=1.199e+02 warm_time(s)=3.928e+01
+order= 9 nref= 3 baseN(quad=False)=3 | ndofs= 3438290 | rel_resid[22]=8.44e-12 | overall_time(s)=4.127e+02 warm_time(s)=1.582e+02
+order=10 nref= 1 baseN(quad=False)=3 | ndofs=  264962 | rel_resid[24]=3.70e-12 | overall_time(s)=7.936e+01 warm_time(s)=1.317e+01
+order=10 nref= 2 baseN(quad=False)=3 | ndofs= 1058162 | rel_resid[23]=5.82e-12 | overall_time(s)=1.866e+02 warm_time(s)=6.163e+01
+order=10 nref= 3 baseN(quad=False)=3 | ndofs= 4229282 | rel_resid[22]=6.35e-12 | overall_time(s)=6.389e+02 warm_time(s)=2.525e+02
+Overall run-time: 1h 7min 9s

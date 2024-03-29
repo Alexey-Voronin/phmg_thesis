@@ -1,0 +1,38 @@
+Warm-up solve failed due to: Nonlinear solve failed to converge after 0 nonlinear iterations.
+Reason:
+   DIVERGED_LINEAR_SOLVE. Please check the input conditions and solver configurations.
+Traceback: Traceback (most recent call last):
+  File "/u/avoronin1/paper_phMG_stokes/phmg/phmg/solver.py", line 280, in _solve
+    self.solver.solve()
+  File "petsc4py/PETSc/Log.pyx", line 188, in petsc4py.PETSc.Log.EventDecorator.decorator.wrapped_func
+  File "petsc4py/PETSc/Log.pyx", line 189, in petsc4py.PETSc.Log.EventDecorator.decorator.wrapped_func
+  File "/u/avoronin1/firedrake_metis/firedrake/src/firedrake/firedrake/adjoint_utils/variational_solver.py", line 89, in wrapper
+    out = solve(self, **kwargs)
+  File "/u/avoronin1/firedrake_metis/firedrake/src/firedrake/firedrake/variational_solver.py", line 286, in solve
+    solving_utils.check_snes_convergence(self.snes)
+  File "/u/avoronin1/firedrake_metis/firedrake/src/firedrake/firedrake/solving_utils.py", line 138, in check_snes_convergence
+    raise ConvergenceError(r"""Nonlinear solve failed to converge after %d nonlinear iterations.
+firedrake.exceptions.ConvergenceError: Nonlinear solve failed to converge after 0 nonlinear iterations.
+Reason:
+   DIVERGED_LINEAR_SOLVE
+
+Warm solve failed due to: Nonlinear solve failed to converge after 0 nonlinear iterations.
+Reason:
+   DIVERGED_LINEAR_SOLVE. Please check the input conditions and solver configurations.
+Traceback: Traceback (most recent call last):
+  File "/u/avoronin1/paper_phMG_stokes/phmg/phmg/solver.py", line 280, in _solve
+    self.solver.solve()
+  File "petsc4py/PETSc/Log.pyx", line 188, in petsc4py.PETSc.Log.EventDecorator.decorator.wrapped_func
+  File "petsc4py/PETSc/Log.pyx", line 189, in petsc4py.PETSc.Log.EventDecorator.decorator.wrapped_func
+  File "/u/avoronin1/firedrake_metis/firedrake/src/firedrake/firedrake/adjoint_utils/variational_solver.py", line 89, in wrapper
+    out = solve(self, **kwargs)
+  File "/u/avoronin1/firedrake_metis/firedrake/src/firedrake/firedrake/variational_solver.py", line 286, in solve
+    solving_utils.check_snes_convergence(self.snes)
+  File "/u/avoronin1/firedrake_metis/firedrake/src/firedrake/firedrake/solving_utils.py", line 138, in check_snes_convergence
+    raise ConvergenceError(r"""Nonlinear solve failed to converge after %d nonlinear iterations.
+firedrake.exceptions.ConvergenceError: Nonlinear solve failed to converge after 0 nonlinear iterations.
+Reason:
+   DIVERGED_LINEAR_SOLVE
+
+order= 6 nref= 2 baseN(quad=False)=8 | ndofs=16426851 | rel_resid[80]=6.13e-07 | overall_time(s)=1.660e+03 warm_time(s)=6.399e+02
+Overall run-time: 0h 28min 24s

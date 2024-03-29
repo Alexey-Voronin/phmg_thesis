@@ -1,0 +1,48 @@
+r2_k03_V3.slurm --> 3063168
+Memory Utilized: 535.07 GB (estimated maximum)
+Memory Efficiency: 6.80% of 7.69 TB (246.00 GB/node)
+r2_k04_V3.slurm --> 3063169
+Memory Utilized: 896.75 GB (estimated maximum)
+Memory Efficiency: 11.39% of 7.69 TB (246.00 GB/node)
+r2_k05_V3.slurm --> 3063170
+Memory Utilized: 1.39 TB (estimated maximum)
+Memory Efficiency: 18.07% of 7.69 TB (246.00 GB/node)
+r2_k06_V3.slurm --> 3063171
+Memory Utilized: 2.15 TB (estimated maximum)
+Memory Efficiency: 27.91% of 7.69 TB (246.00 GB/node)
+r2_k07_V3.slurm --> 3063172
+Memory Utilized: 1.87 TB (estimated maximum)
+Memory Efficiency: 24.33% of 7.69 TB (246.00 GB/node)
+r2_k08_V3.slurm --> 3063173
+Memory Utilized: 3.12 TB (estimated maximum)
+Memory Efficiency: 40.61% of 7.69 TB (246.00 GB/node)
+r2_k09_V3.slurm --> 3063174
+Memory Utilized: 1.87 TB (estimated maximum)
+Memory Efficiency: 24.34% of 7.69 TB (246.00 GB/node)
+r2_k10_V3.slurm --> 3063175
+Memory Utilized: 3.18 TB (estimated maximum)
+Memory Efficiency: 41.40% of 7.69 TB (246.00 GB/node)
+r1_k03_V3.slurm --> 3063312
+Memory Utilized: 10.75 GB (estimated maximum)
+Memory Efficiency: 0.73% of 1.44 TB (246.00 GB/node)
+r1_k04_V3.slurm --> 3063313
+Memory Utilized: 25.19 GB (estimated maximum)
+Memory Efficiency: 1.71% of 1.44 TB (246.00 GB/node)
+r1_k05_V3.slurm --> 3063314
+Memory Utilized: 50.89 GB (estimated maximum)
+Memory Efficiency: 3.45% of 1.44 TB (246.00 GB/node)
+r1_k06_V3.slurm --> 3063315
+Memory Utilized: 105.22 GB (estimated maximum)
+Memory Efficiency: 7.13% of 1.44 TB (246.00 GB/node)
+r1_k07_V3.slurm --> 3063316
+Memory Utilized: 198.95 GB (estimated maximum)
+Memory Efficiency: 13.48% of 1.44 TB (246.00 GB/node)
+r1_k08_V3.slurm --> 3063317
+Memory Utilized: 373.25 GB (estimated maximum)
+Memory Efficiency: 25.29% of 1.44 TB (246.00 GB/node)
+r1_k09_V3.slurm --> 3063318
+Memory Utilized: 666.99 GB (estimated maximum)
+Memory Efficiency: 45.19% of 1.44 TB (246.00 GB/node)
+r1_k10_V3.slurm --> 3063319
+Memory Utilized: 1.12 TB (estimated maximum)
+Memory Efficiency: 77.90% of 1.44 TB (246.00 GB/node)

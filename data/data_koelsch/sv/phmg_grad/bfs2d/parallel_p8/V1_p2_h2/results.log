@@ -1,0 +1,5 @@
+order= 3 nref= 3 baseN(quad=False)=6 | ndofs= 2729978 | rel_resid[14]=7.34e-12 | overall_time(s)=1.036e+02 warm_time(s)=2.410e+01
+order= 4 nref= 3 baseN(quad=False)=6 | ndofs= 4730914 | rel_resid[16]=8.04e-12 | overall_time(s)=1.632e+02 warm_time(s)=3.933e+01
+order= 5 nref= 3 baseN(quad=False)=5 | ndofs= 3904642 | rel_resid[19]=6.24e-12 | overall_time(s)=1.252e+02 warm_time(s)=3.570e+01
+order= 6 nref= 3 baseN(quad=False)=4 | ndofs= 3045218 | rel_resid[17]=7.68e-12 | overall_time(s)=2.224e+02 warm_time(s)=3.456e+01
+order= 7 nref= 3 baseN(quad=False)=4 | ndofs= 4113202 | rel_resid[19]=3.61e-12 | overall_time(s)=2.954e+02 warm_time(s)=5.244e+01

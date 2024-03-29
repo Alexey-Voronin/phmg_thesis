@@ -1,0 +1,2 @@
+order=10 nref= 1 baseN(quad=False)=5 | ndofs= 2194203 | rel_resid[20]=7.54e-12 | overall_time(s)=2.421e+03 warm_time(s)=2.426e+02
+Overall run-time: 0h 40min 45s
