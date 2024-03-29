@@ -1,6 +1,11 @@
-# Data
+# phMG preconditioners for Taylor-Hood and Scott-Vogelius discretizations of Stokes equations
 
-## Collection
+## [Code](phmg)
+
+
+## [Data](data)
+
+### Collection
 
 - Data is organized by clusters: e.g., `data_koelsch` and `data_delta`.
 - Includes Scott-Vogelius (SV) and Taylor-Hood (TH) discretization.
@@ -32,6 +37,6 @@ th (discretization)
     └── run.sh
 ```
 
-## [Data Visualization](data/plot_data)
+### [Data Visualization](data/plot_data)
 
 This directory contains Jupyter notebooks and scripts for data processing.
